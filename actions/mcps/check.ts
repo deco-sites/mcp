@@ -39,8 +39,6 @@ export default async function checkConfiguration(
 ): Promise<CheckResult> {
   const installId = props.installId;
 
-  console.log(installId);
-
   if (!installId) {
     return {
       success: false,
@@ -49,8 +47,6 @@ export default async function checkConfiguration(
   }
 
   const config = await installStorage.getItem<Record<string, any>>(installId);
-
-  console.log(config);
 
   if (!config) {
     return { success: false, errors: ["Install not found"] };

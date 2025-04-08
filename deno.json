@@ -2,7 +2,7 @@
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "@deco/durable": "jsr:@deco/durable@0.5.3",
-    "@deco/mcp": "jsr:@deco/mcp@0.2.9",
+    "@deco/mcp": "jsr:@deco/mcp@0.3.0",
     "@hono/hono": "jsr:@hono/hono@^4.5.4",
     "@modelcontextprotocol/sdk": "npm:@modelcontextprotocol/sdk@^1.6.1",
     "ajv": "npm:ajv@^8.17.1",
@@ -14,14 +14,14 @@
     "site/": "./",
     "@std/http": "jsr:@std/http@^1.0.13",
     "std/": "https://deno.land/std@0.190.0/",
-    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.68.3/",
+    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@v0.68.3/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
-    "@deco/htmx": "https://denopkg.com/deco-cx/apps@0.65.5/htmx/mod.ts",
+    "@deco/htmx": "https://denopkg.com/deco-cx/apps@v0.68.3/htmx/mod.ts",
     "https://esm.sh/*preact-render-to-string@6.3.1": "npm:preact-render-to-string@6.4.2",
-    "@deco/dev": "jsr:@deco/dev@1.111.5",
-    "@deco/deco": "jsr:@deco/deco@1.111.5",
-    "daisyui": "npm:daisyui@4.6.0"
+    "@deco/dev": "jsr:@deco/dev@1.112.1",
+    "daisyui": "npm:daisyui@4.6.0",
+    "@deco/deco": "jsr:@deco/deco@1.112.1"
   },
   "tasks": {
     "start": "deno run -A --unstable-http --env https://deco.cx/run -- deno task dev",

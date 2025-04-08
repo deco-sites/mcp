@@ -10,7 +10,6 @@ import { middlewaresFor } from "site/middleware.ts";
 
 export interface MCPInstance {
   deco: Deco<Manifest>;
-  server: ReturnType<typeof mcpServer<Manifest>>;
 }
 
 const contexts = new LRUCache<string, Promise<MCPInstance>>({
@@ -20,9 +19,9 @@ const contexts = new LRUCache<string, Promise<MCPInstance>>({
 });
 
 export interface MCPInstanceOptions {
-  bindings?: ReturnType<typeof HTMX<Manifest>>;
   installId?: string;
   appName?: string;
+  bindings?: DecoOptions<Manifest>["bindings"];
 }
 
 export const decoInstance = async (
@@ -49,25 +48,31 @@ export const decoInstance = async (
     instance = Deco.init<Manifest>({
       manifest,
       decofile,
-      bindings,
+      bindings: {
+        ...bindings ?? {},
+        useServer: (deco, hono) => {
+          hono.use(
+            "/*",
+            mcpServer(
+              deco,
+              appName && installId
+                ? {
+                  middlewares: middlewaresFor({ appName, installId }),
+                  basePath,
+                }
+                : {
+                  include: [
+                    "site/loaders/mcps/search.ts" as const,
+                    "site/actions/mcps/configure.ts" as const,
+                    "site/actions/mcps/check.ts" as const,
+                  ],
+                },
+            ),
+          ); // some type errors may occur
+        },
+      },
     }).then((deco) => ({
       deco,
-      server: mcpServer<Manifest>(
-        deco,
-        appName && installId
-          ? {
-            middlewares: middlewaresFor({ appName, installId }),
-            basePath,
-          }
-          : {
-            include: [
-              "site/loaders/mcps/get.ts",
-              "site/loaders/mcps/search.ts",
-              "site/actions/mcps/configure.ts",
-              "site/actions/mcps/check.ts",
-            ],
-          },
-      ),
     }));
     contexts.set(installId, instance);
   }
@@ -79,6 +84,8 @@ export const cleanInstance = (installId: string) => {
   contexts.delete(installId);
 };
 
-export const { deco: MCP_REGISTRY, server: MCP_SERVER } = (await decoInstance({
-  bindings: HTMX({ Layout }),
+export const { deco: MCP_REGISTRY } = (await decoInstance({
+  bindings: HTMX<Manifest>({
+    Layout,
+  }),
 }))!;

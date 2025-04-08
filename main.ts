@@ -1,38 +1,20 @@
-import { Hono } from "@hono/hono";
-import { decoInstance, MCP_REGISTRY, MCP_SERVER } from "site/registry.ts";
 import { Context } from "@deco/deco";
+import { Hono } from "@hono/hono";
+import { decoInstance, MCP_REGISTRY } from "site/registry.ts";
 
 const app = new Hono();
 const envPort = Deno.env.get("PORT");
 
-app.use("/apps/:appName/:installId/*", async (ctx, next) => {
-  const url = new URL(ctx.req.url);
-
-  const instance = await decoInstance({
-    installId: ctx.req.param("installId"),
-    appName: ctx.req.param("appName"),
-  });
-
-  if (!instance) {
-    return ctx.notFound();
-  }
-
-  const run = Context.bind(instance.deco.ctx, async () => {
-    return await instance.server(ctx, next);
-  });
-  return run();
+const APPS_INSTALL_URL = new URLPattern({
+  pathname: "/apps/:appName/:installId/*",
 });
-
-app.use("/*", (ctx, next) => {
-  const run = Context.bind(MCP_REGISTRY!.ctx, async () => {
-    return await MCP_SERVER!(ctx, next);
-  });
-  return run();
-});
-
 app.use("/*", async (ctx) => {
-  const installId = new URL(ctx.req.url).searchParams.get("installId");
-  const appName = new URL(ctx.req.url).searchParams.get("appName");
+  const url = new URL(ctx.req.url);
+  const match = APPS_INSTALL_URL.exec({ pathname: url.pathname });
+  const installId = url.searchParams.get("installId") ??
+    match?.pathname?.groups?.installId;
+  const appName = url.searchParams.get("appName") ??
+    match?.pathname?.groups?.appName;
   if (installId && appName) {
     const instance = await decoInstance({ installId, appName });
     if (!instance) {
