@@ -4,6 +4,7 @@ import { AppContext } from "../apps/site.ts";
 import { type MCP } from "../loaders/mcps/search.ts";
 import { useId } from "../sdk/useId.ts";
 import { useScript } from "@deco/deco/hooks";
+import RJSF from "site/components/RJSF.tsx";
 
 export interface Props {
   id?: string;
@@ -268,10 +269,19 @@ export default function PDP({ mcp, error, installation }: Props) {
           enableSchemaRequest: false,
         });
 
+        // Try to get initial data from RJSF form if available
+        let initialValue = "{}";
+        if (window.getFormData && typeof window.getFormData === "function") {
+          const formData = window.getFormData("rjsf-form");
+          if (formData && Object.keys(formData).length > 0) {
+            initialValue = JSON.stringify(formData, null, 2);
+          }
+        }
+
         globalThis.monacoEditor = globalThis.monaco.editor.create(
           editorElement,
           {
-            value: "{}",
+            value: initialValue,
             language: "json",
             theme: "vs",
             automaticLayout: true,
@@ -305,6 +315,45 @@ export default function PDP({ mcp, error, installation }: Props) {
             if (errorElement) {
               errorElement.style.display = "none";
             }
+          }
+        });
+
+        // Add content change listener to update RJSF form
+        globalThis.monacoEditor.onDidChangeModelContent(function () {
+          try {
+            const jsonValue = globalThis.monacoEditor.getValue();
+            if (!jsonValue) return;
+
+            const parsedJson = JSON.parse(jsonValue);
+
+            // Update RJSF form with Monaco editor content
+            if (window.updateFormData) {
+              window.updateFormData("rjsf-form", parsedJson);
+            }
+          } catch (err) {
+            // Ignore parsing errors during typing
+            console.debug("JSON parsing during typing:", err);
+          }
+        });
+
+        // Listen for RJSF form changes to update Monaco
+        document.addEventListener("rjsf-form-change", function (event) {
+          if (!globalThis.monacoEditor) return;
+
+          const formData = event.detail.formData;
+          const currentValue = globalThis.monacoEditor.getValue();
+
+          try {
+            const currentJson = JSON.parse(currentValue || "{}");
+
+            // Only update if the values are different to avoid loops
+            if (JSON.stringify(currentJson) !== JSON.stringify(formData)) {
+              globalThis.monacoEditor.setValue(
+                JSON.stringify(formData, null, 2),
+              );
+            }
+          } catch (err) {
+            console.error("Error updating Monaco from RJSF:", err);
           }
         });
 
@@ -422,8 +471,43 @@ export default function PDP({ mcp, error, installation }: Props) {
     }
   }
 
+  // Function to initialize the form and editor synchronization
+  function initFormEditorSync() {
+    // This function will be called after both the form and editor are initialized
+    // It ensures that the initial state is synchronized
+    setTimeout(() => {
+      if (window.getFormData && globalThis.monacoEditor) {
+        const formData = window.getFormData("rjsf-form");
+        const editorValue = globalThis.monacoEditor.getValue();
+
+        try {
+          const editorJson = JSON.parse(editorValue || "{}");
+
+          // If form has data but editor is empty, update editor
+          if (
+            Object.keys(formData).length > 0 &&
+            Object.keys(editorJson).length === 0
+          ) {
+            globalThis.monacoEditor.setValue(JSON.stringify(formData, null, 2));
+          } // If editor has data but form is empty, update form
+          else if (
+            Object.keys(editorJson).length > 0 &&
+            Object.keys(formData).length === 0
+          ) {
+            if (window.updateFormData) {
+              window.updateFormData("rjsf-form", editorJson);
+            }
+          }
+        } catch (err) {
+          console.error("Error during initial sync:", err);
+        }
+      }
+    }, 500); // Give time for both components to initialize
+  }
+
   const handleSetup = useScript(setupMonaco, editorId, schemaId, errorId);
   const handleClick = useScript(handleSubmit, slot, loadingId, btnTextId);
+  const handleSync = useScript(initFormEditorSync);
 
   if (error) {
     return (
@@ -518,7 +602,43 @@ export default function PDP({ mcp, error, installation }: Props) {
       <h1 class="text-4xl font-bold mb-6">{mcp.name}</h1>
       <p class="text-gray-600 mb-8">{mcp.description}</p>
 
-      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <input
+        id="form-input"
+        name="tab"
+        type="radio"
+        class="sr-only peer/form"
+        value="form"
+        checked
+      />
+      <label
+        for="form-input"
+        class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors"
+      >
+        Form
+      </label>
+      <input
+        id="json-input"
+        name="tab"
+        type="radio"
+        class="sr-only peer/json"
+        value="json"
+      />
+      <label
+        for="json-input"
+        class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors  ml-2"
+      >
+        JSON
+      </label>
+
+      <div class="peer-checked/form:block hidden">
+        <RJSF
+          schema={mcp.inputSchema}
+          formId="rjsf-form"
+          // onsubmit={`'${handleClick}'`}
+        />
+      </div>
+
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 peer-checked/json:block hidden">
         <h2 class="text-2xl font-bold mb-6">Configure Installation</h2>
 
         {/* Schema Properties Table */}
@@ -605,6 +725,9 @@ export default function PDP({ mcp, error, installation }: Props) {
 
       {/* Initialize Monaco */}
       <script dangerouslySetInnerHTML={{ __html: handleSetup }} />
+
+      {/* Initialize form-editor synchronization */}
+      <script dangerouslySetInnerHTML={{ __html: handleSync }} />
     </div>
   );
 }
