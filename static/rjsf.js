@@ -25,7 +25,7 @@ export function renderForm({
 	rootId,
 	formData = {},
 	formId = "rjsf-form",
-	onsubmit
+	slotId = "",
 }) {
 	const rootElement = document.getElementById(rootId);
 	
@@ -70,7 +70,10 @@ export function renderForm({
 				onChange: handleChange,
 				validator,
 				formData: formData || {},
-				onsubmit,
+				onSubmit: ({formData}) => {
+					window.handleSubmitForm &&  window
+        .handleSubmitForm({ formData, slot: slotId })
+				},
 				method: "POST"
 				// You can add more props here as needed
 				// uiSchema: {},
@@ -80,8 +83,14 @@ export function renderForm({
 			React.createElement('button', {
 				type: "submit",
 				className: "bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors",
-				onClick: () => eval(onsubmit)
-			}, 'install')
+			}, [
+				React.createElement('span', {
+					className: "[.htmx-request_&]:hidden inline"
+				}, "Install"),
+				React.createElement('span', {
+					className: "[.htmx-request_&]:inline hidden loading loading-spinner loading-sm"
+				})
+			])
 			)
 		);
 	}

@@ -1828,6 +1828,9 @@ input.tab:checked + .tab-content,
 .max-w-full {
   max-width: 100%;
 }
+.max-w-screen-sm {
+  max-width: 640px;
+}
 .max-w-sm {
   max-width: 24rem;
 }
@@ -2420,6 +2423,9 @@ input.tab:checked + .tab-content,
 .hover\:underline:hover {
   text-decoration-line: underline;
 }
+.hover\:bg-gray-300\/30:hover {
+  background-color: rgb(209 213 219 / 0.3);
+}
 .hover\:shadow-lg:hover {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
@@ -2451,6 +2457,18 @@ input.tab:checked + .tab-content,
 }
 .peer\/json:checked ~ .peer-checked\/json\:block {
   display: block;
+}
+.peer\/form:checked ~ .peer-checked\/form\:flex {
+  display: flex;
+}
+.peer\/json:checked ~ .peer-checked\/json\:flex {
+  display: flex;
+}
+.peer\/form:checked ~ .peer-checked\/form\:bg-gray-300\/30 {
+  background-color: rgb(209 213 219 / 0.3);
+}
+.peer\/json:checked ~ .peer-checked\/json\:bg-gray-300\/30 {
+  background-color: rgb(209 213 219 / 0.3);
 }
 @media (min-width: 640px) {
 
@@ -2512,6 +2530,10 @@ input.tab:checked + .tab-content,
 
   .lg\:max-h-\[600px\] {
     max-height: 600px;
+  }
+
+  .lg\:max-w-screen-lg {
+    max-width: 1024px;
   }
 
   .lg\:flex-\[100px\] {

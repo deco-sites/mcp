@@ -246,6 +246,25 @@ export default function PDP({ mcp, error, installation }: Props) {
     }
 
     function setupEditor() {
+      function handleSubmit({ formData, slot }) {
+        const form = new FormData();
+        form.append("config", JSON.stringify(formData));
+
+        return fetch(globalThis.location.href, {
+          method: "POST",
+          body: form,
+        })
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (result) {
+            const s = document.getElementById(slot);
+            if (s) s.innerHTML = result;
+          });
+      }
+
+      window.handleSubmitForm = handleSubmit;
+
       const editorElement = document.getElementById(editorId);
       const schemaElement = document.getElementById(schemaId);
       const errorElement = document.getElementById(errorId);
@@ -434,23 +453,13 @@ export default function PDP({ mcp, error, installation }: Props) {
         }
       }
 
-      const form = new FormData();
-      form.append("config", JSON.stringify(parsedJson));
-
       if (errorElement) {
         errorElement.style.display = "none";
       }
 
-      fetch(globalThis.location.href, {
-        method: "POST",
-        body: form,
-      })
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (result) {
-          const s = document.getElementById(slot);
-          if (s) s.innerHTML = result;
+      window
+        .handleSubmitForm({ formData: parsedJson, slot })
+        .then(() => {
           resetButton();
         })
         .catch(function (err) {
@@ -610,12 +619,7 @@ export default function PDP({ mcp, error, installation }: Props) {
         value="form"
         checked
       />
-      <label
-        for="form-input"
-        class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors"
-      >
-        Form
-      </label>
+
       <input
         id="json-input"
         name="tab"
@@ -623,18 +627,47 @@ export default function PDP({ mcp, error, installation }: Props) {
         class="sr-only peer/json"
         value="json"
       />
-      <label
-        for="json-input"
-        class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors  ml-2"
-      >
-        JSON
-      </label>
+      <div class="flex justify-end mb-4">
+        {/* Botão JSON - Mostrado apenas quando o Form está selecionado */}
+        <label
+          for="json-input"
+          class="peer-checked/form:flex peer-checked/form:bg-gray-300/30 p-2 rounded-full hover:bg-gray-300/30 transition-colors cursor-pointer"
+          title="Switch to JSON view"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="currentColor"
+          >
+            <path d="M560-160v-80h120q17 0 28.5-11.5T720-280v-80q0-38 22-69t58-44v-14q-36-13-58-44t-22-69v-80q0-17-11.5-28.5T680-720H560v-80h120q50 0 85 35t35 85v80q0 17 11.5 28.5T840-560h40v160h-40q-17 0-28.5 11.5T800-360v80q0 50-35 85t-85 35H560Zm-280 0q-50 0-85-35t-35-85v-80q0-17-11.5-28.5T120-400H80v-160h40q17 0 28.5-11.5T160-600v-80q0-50 35-85t85-35h120v80H280q-17 0-28.5 11.5T240-680v80q0 38-22 69t-58 44v14q36 13 58 44t22 69v80q0 17 11.5 28.5T280-240h120v80H280Z" />
+          </svg>
+        </label>
+
+        {/* Botão Form - Mostrado apenas quando o JSON está selecionado */}
+        <label
+          for="form-input"
+          class="peer-checked/json:flex peer-checked/json:bg-gray-300/30 p-2 rounded-full hover:bg-gray-300/30 transition-colors cursor-pointer"
+          title="Switch to Form view"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="currentColor"
+          >
+            <path d="M280-600v-80h560v80H280Zm0 160v-80h560v80H280Zm0 160v-80h560v80H280ZM160-600q-17 0-28.5-11.5T120-640q0-17 11.5-28.5T160-680q17 0 28.5 11.5T200-640q0 17-11.5 28.5T160-600Zm0 160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520q17 0 28.5 11.5T200-480q0 17-11.5 28.5T160-440Zm0 160q-17 0-28.5-11.5T120-320q0-17 11.5-28.5T160-360q17 0 28.5 11.5T200-320q0 17-11.5 28.5T160-280Z" />
+          </svg>
+        </label>
+      </div>
 
       <div class="peer-checked/form:block hidden">
         <RJSF
           schema={mcp.inputSchema}
           formId="rjsf-form"
-          // onsubmit={`'${handleClick}'`}
+          slotId={slot}
         />
       </div>
 
@@ -700,9 +733,9 @@ export default function PDP({ mcp, error, installation }: Props) {
             </span>
           </button>
         </form>
-
-        <div id={slot} />
       </div>
+
+      <div id={slot} />
 
       {/* Store the input schema */}
       <script

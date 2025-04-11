@@ -7,16 +7,21 @@ export default function RJSF(
     schema,
     formData,
     formId = "rjsf-form",
-    onsubmit,
+    slotId = "",
   }: {
     schema: Record<string, any>;
     formData?: Record<string, any>;
     formId?: string;
+    slotId?: string;
   },
 ) {
   return (
     <>
-      <div id={RJSF_ID} data-form-id={formId} />
+      <div
+        id={RJSF_ID}
+        data-form-id={formId}
+        class="w-full max-w-screen-sm lg:max-w-screen-lg overflow-hidden"
+      />
       {/* Script file at static/rjsf.js */}
       <script
         type="module"
@@ -31,7 +36,7 @@ export default function RJSF(
       rootId: "${RJSF_ID}",
       formData: ${formData ? JSON.stringify(formData) : "null"},
       formId: "${formId}",
-      onsubmit: ${onsubmit},
+      slotId: "${slotId}",
     });
   `,
         }}
