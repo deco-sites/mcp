@@ -128,7 +128,7 @@ export default function PDP({ mcp, error, installation }: Props) {
           if (part) result.push(part);
           if (urls[i]) {
             // Clean the URL (remove trailing punctuation)
-            let cleanUrl = urls[i].replace(/[.,;:!?]+$/, "");
+            const cleanUrl = urls[i].replace(/[.,;:!?]+$/, "");
 
             result.push(
               <a
