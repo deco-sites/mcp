@@ -11,12 +11,13 @@ const APPS_INSTALL_URL = new URLPattern({
 app.use("/*", async (ctx) => {
   const url = new URL(ctx.req.url);
   const match = APPS_INSTALL_URL.exec({ pathname: url.pathname });
+
   const installId = url.searchParams.get("installId") ??
     match?.pathname?.groups?.installId;
   const appName = url.searchParams.get("appName") ??
     match?.pathname?.groups?.appName;
   if (installId && appName) {
-    const instance = await decoInstance({ installId, appName });
+    const instance = await decoInstance({ installId, appName: appName });
     if (!instance) {
       return ctx.res = await ctx.notFound();
     }

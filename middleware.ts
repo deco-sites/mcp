@@ -49,7 +49,8 @@ export const middlewaresFor = (
     ],
     listTools: [async (_req, next) => {
       const [{ tools }, apps] = await Promise.all([next!(), searchMCPs()]);
-      const inputSchema = apps.find((app) => app.name === appName)?.inputSchema;
+      const inputSchema = apps.find((app) => app.name === decodeURIComponent(appName))?.inputSchema;
+
       return {
         tools: [...tools, {
           name: checkConfigurationTool,

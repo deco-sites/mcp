@@ -18,7 +18,9 @@ export const loader = async (props: Props, _req: Request, ctx: AppContext) => {
     return { ...props, error: "MCP id not provided" };
   }
 
-  const mcp = await ctx.invoke.site.loaders.mcps.get({ id: props.id });
+  const mcp = await ctx.invoke.site.loaders.mcps.get({
+    id: decodeURIComponent(props.id),
+  });
 
   if (!mcp) {
     return { ...props, error: "MCP not found" };
@@ -38,7 +40,8 @@ export const action = async (
     const config = formProps.config;
 
     const result = await ctx.invoke.site.actions.mcps.configure({
-      id: props.id!,
+      id: decodeURIComponent(props.id!),
+      // deno-lint-ignore no-explicit-any
       props: JSON.parse(config as any as string),
     });
 
@@ -125,7 +128,7 @@ export default function PDP({ mcp, error, installation }: Props) {
           if (part) result.push(part);
           if (urls[i]) {
             // Clean the URL (remove trailing punctuation)
-            const cleanUrl = urls[i].replace(/[.,;:!?]+$/, "");
+            let cleanUrl = urls[i].replace(/[.,;:!?]+$/, "");
 
             result.push(
               <a
