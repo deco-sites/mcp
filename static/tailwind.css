@@ -2412,6 +2412,9 @@ input.tab:checked + .tab-content,
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
+.hover\:bg-gray-300\/30:hover {
+  background-color: rgb(209 213 219 / 0.3);
+}
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -2422,9 +2425,6 @@ input.tab:checked + .tab-content,
 }
 .hover\:underline:hover {
   text-decoration-line: underline;
-}
-.hover\:bg-gray-300\/30:hover {
-  background-color: rgb(209 213 219 / 0.3);
 }
 .hover\:shadow-lg:hover {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
