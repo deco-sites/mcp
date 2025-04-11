@@ -15,8 +15,9 @@ import * as $$$$$$$$$$$7 from "./apps/deco/slack.ts";
 import * as $$$$$$$$$$$8 from "./apps/deco/stability.ts";
 import * as $$$$$$$$$$$9 from "./apps/deco/tiptap-cloud.ts";
 import * as $$$$$$$$$$$10 from "./apps/deco/vertex.ts";
-import * as $$$$$$$$$$$11 from "./apps/deco/vtex.ts";
-import * as $$$$$$$$$$$12 from "./apps/site.ts";
+import * as $$$$$$$$$$$11 from "./apps/deco/vnda.ts";
+import * as $$$$$$$$$$$12 from "./apps/deco/vtex.ts";
+import * as $$$$$$$$$$$13 from "./apps/site.ts";
 import * as $$$0 from "./loaders/mcps/get.ts";
 import * as $$$1 from "./loaders/mcps/search.ts";
 import * as $$$$$$0 from "./sections/Component.tsx";
@@ -51,8 +52,9 @@ const manifest = {
     "site/apps/deco/stability.ts": $$$$$$$$$$$8,
     "site/apps/deco/tiptap-cloud.ts": $$$$$$$$$$$9,
     "site/apps/deco/vertex.ts": $$$$$$$$$$$10,
-    "site/apps/deco/vtex.ts": $$$$$$$$$$$11,
-    "site/apps/site.ts": $$$$$$$$$$$12,
+    "site/apps/deco/vnda.ts": $$$$$$$$$$$11,
+    "site/apps/deco/vtex.ts": $$$$$$$$$$$12,
+    "site/apps/site.ts": $$$$$$$$$$$13,
   },
   "name": "site",
   "baseUrl": import.meta.url,
