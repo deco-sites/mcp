@@ -514,9 +514,53 @@ export default function PDP({ mcp, error, installation }: Props) {
     }, 500); // Give time for both components to initialize
   }
 
+  function toggleViewMode() {
+    // Função para inicializar os botões de alternância
+    function initToggleButtons() {
+      const formView = document.getElementById("form-view");
+      const jsonView = document.getElementById("json-view");
+      const formButton = document.getElementById("form-button");
+      const jsonButton = document.getElementById("json-button");
+
+      if (!formView || !jsonView || !formButton || !jsonButton) {
+        console.error("Elementos de visualização não encontrados");
+        return;
+      }
+
+      // Função para alternar entre as visualizações
+      function toggleViews() {
+        const [toDisplayView, toHiddenView, toDisplayBtn, toHiddenBtn] =
+          formView.classList.contains("hidden")
+            ? [formView, jsonView, jsonButton, formButton]
+            : [jsonView, formView, formButton, jsonButton];
+
+        toDisplayView.classList.remove("hidden");
+        toHiddenView.classList.add("hidden");
+
+        toDisplayBtn.classList.remove("hidden");
+        toHiddenBtn.classList.add("hidden");
+      }
+
+      // Adicionar event listeners aos botões
+      jsonButton.addEventListener("click", toggleViews);
+      formButton.addEventListener("click", toggleViews);
+    }
+
+    // Tentar inicializar imediatamente
+    if (
+      document.readyState === "complete" ||
+      document.readyState === "interactive"
+    ) {
+      setTimeout(initToggleButtons, 1);
+    } else {
+      document.addEventListener("DOMContentLoaded", initToggleButtons);
+    }
+  }
+
   const handleSetup = useScript(setupMonaco, editorId, schemaId, errorId);
   const handleClick = useScript(handleSubmit, slot, loadingId, btnTextId);
   const handleSync = useScript(initFormEditorSync);
+  const handleToggleView = useScript(toggleViewMode);
 
   if (error) {
     return (
@@ -609,61 +653,49 @@ export default function PDP({ mcp, error, installation }: Props) {
         </a>
       </div>
       <h1 class="text-4xl font-bold mb-6">{mcp.name}</h1>
-      <p class="text-gray-600 mb-8">{mcp.description}</p>
-
-      <input
-        id="form-input"
-        name="tab"
-        type="radio"
-        class="sr-only peer/form"
-        value="form"
-        checked
-      />
-
-      <input
-        id="json-input"
-        name="tab"
-        type="radio"
-        class="sr-only peer/json"
-        value="json"
-      />
-      <div class="flex justify-end mb-4">
-        {/* Botão JSON - Mostrado apenas quando o Form está selecionado */}
-        <label
-          for="json-input"
-          class="peer-checked/form:flex peer-checked/form:bg-gray-300/30 p-2 rounded-full hover:bg-gray-300/30 transition-colors cursor-pointer"
-          title="Switch to JSON view"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="currentColor"
+      <hgroup class="text-gray-600 mb-8 flex items-center justify-between gap-4">
+        <h2>{mcp.description}</h2>
+        <div class="w-10 h-10 flex">
+          {/* Botão JSON - Mostrado apenas quando o Form está selecionado */}
+          <label
+            id="json-button"
+            class="p-2 rounded-full hover:bg-gray-300/30 transition-colors cursor-pointer"
+            title="Switch to JSON view"
           >
-            <path d="M560-160v-80h120q17 0 28.5-11.5T720-280v-80q0-38 22-69t58-44v-14q-36-13-58-44t-22-69v-80q0-17-11.5-28.5T680-720H560v-80h120q50 0 85 35t35 85v80q0 17 11.5 28.5T840-560h40v160h-40q-17 0-28.5 11.5T800-360v80q0 50-35 85t-85 35H560Zm-280 0q-50 0-85-35t-35-85v-80q0-17-11.5-28.5T120-400H80v-160h40q17 0 28.5-11.5T160-600v-80q0-50 35-85t85-35h120v80H280q-17 0-28.5 11.5T240-680v80q0 38-22 69t-58 44v14q36 13 58 44t22 69v80q0 17 11.5 28.5T280-240h120v80H280Z" />
-          </svg>
-        </label>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentColor"
+            >
+              <path d="M560-160v-80h120q17 0 28.5-11.5T720-280v-80q0-38 22-69t58-44v-14q-36-13-58-44t-22-69v-80q0-17-11.5-28.5T680-720H560v-80h120q50 0 85 35t35 85v80q0 17 11.5 28.5T840-560h40v160h-40q-17 0-28.5 11.5T800-360v80q0 50-35 85t-85 35H560Zm-280 0q-50 0-85-35t-35-85v-80q0-17-11.5-28.5T120-400H80v-160h40q17 0 28.5-11.5T160-600v-80q0-50 35-85t85-35h120v80H280q-17 0-28.5 11.5T240-680v80q0 38-22 69t-58 44v14q36 13 58 44t22 69v80q0 17 11.5 28.5T280-240h120v80H280Z" />
+            </svg>
+          </label>
 
-        {/* Botão Form - Mostrado apenas quando o JSON está selecionado */}
-        <label
-          for="form-input"
-          class="peer-checked/json:flex peer-checked/json:bg-gray-300/30 p-2 rounded-full hover:bg-gray-300/30 transition-colors cursor-pointer"
-          title="Switch to Form view"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="24px"
-            viewBox="0 -960 960 960"
-            width="24px"
-            fill="currentColor"
+          {/* Botão Form - Mostrado apenas quando o JSON está selecionado */}
+          <label
+            id="form-button"
+            class="p-2 rounded-full hover:bg-gray-300/30 transition-colors cursor-pointer hidden"
+            title="Switch to Form view"
           >
-            <path d="M280-600v-80h560v80H280Zm0 160v-80h560v80H280Zm0 160v-80h560v80H280ZM160-600q-17 0-28.5-11.5T120-640q0-17 11.5-28.5T160-680q17 0 28.5 11.5T200-640q0 17-11.5 28.5T160-600Zm0 160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520q17 0 28.5 11.5T200-480q0 17-11.5 28.5T160-440Zm0 160q-17 0-28.5-11.5T120-320q0-17 11.5-28.5T160-360q17 0 28.5 11.5T200-320q0 17-11.5 28.5T160-280Z" />
-          </svg>
-        </label>
-      </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="currentColor"
+            >
+              <path d="M280-600v-80h560v80H280Zm0 160v-80h560v80H280Zm0 160v-80h560v80H280ZM160-600q-17 0-28.5-11.5T120-640q0-17 11.5-28.5T160-680q17 0 28.5 11.5T200-640q0 17-11.5 28.5T160-600Zm0 160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520q17 0 28.5 11.5T200-480q0 17-11.5 28.5T160-440Zm0 160q-17 0-28.5-11.5T120-320q0-17 11.5-28.5T160-360q17 0 28.5 11.5T200-320q0 17-11.5 28.5T160-280Z" />
+            </svg>
+          </label>
+        </div>
+      </hgroup>
 
-      <div class="peer-checked/form:block hidden">
+      <div
+        id="form-view"
+        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "
+      >
         <RJSF
           schema={mcp.inputSchema}
           formId="rjsf-form"
@@ -671,7 +703,10 @@ export default function PDP({ mcp, error, installation }: Props) {
         />
       </div>
 
-      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 peer-checked/json:block hidden">
+      <div
+        id="json-view"
+        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 hidden"
+      >
         <h2 class="text-2xl font-bold mb-6">Configure Installation</h2>
 
         {/* Schema Properties Table */}
@@ -761,6 +796,9 @@ export default function PDP({ mcp, error, installation }: Props) {
 
       {/* Initialize form-editor synchronization */}
       <script dangerouslySetInnerHTML={{ __html: handleSync }} />
+
+      {/* Initialize view toggle */}
+      <script dangerouslySetInnerHTML={{ __html: handleToggleView }} />
     </div>
   );
 }
