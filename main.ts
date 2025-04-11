@@ -17,7 +17,7 @@ app.use("/*", async (ctx) => {
   const appName = url.searchParams.get("appName") ??
     match?.pathname?.groups?.appName;
   if (installId && appName) {
-    const instance = await decoInstance({ installId, appName: appName });
+    const instance = await decoInstance({ installId, appName });
     if (!instance) {
       return ctx.res = await ctx.notFound();
     }
