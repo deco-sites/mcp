@@ -63,7 +63,7 @@ export const decoInstance = async (
   }
 
   const basePath = appName && installId
-    ? `/apps/${appName}/${installId}`
+    ? `/apps/${encodeURIComponent(appName)}/${installId}`
     : undefined;
 
   let instance = contexts.get(installId);

@@ -16,8 +16,11 @@ app.use("/*", async (ctx) => {
     match?.pathname?.groups?.installId;
   const appName = url.searchParams.get("appName") ??
     match?.pathname?.groups?.appName;
+
   if (installId && appName) {
-    const instance = await decoInstance({ installId, appName });
+    const decodedAppName = decodeURIComponent(appName);
+    
+    const instance = await decoInstance({ installId, appName: decodedAppName });
     if (!instance) {
       return ctx.res = await ctx.notFound();
     }

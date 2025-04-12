@@ -58,11 +58,6 @@ export default function PDP({ mcp, error, installation }: Props) {
   const loadingId = useId();
   const btnTextId = useId();
 
-  // Log the input schema to console for debugging
-  if (mcp?.inputSchema) {
-    console.log("MCP Input Schema:", mcp.inputSchema);
-  }
-
   // Parse input schema and extract required properties
   function SchemaPropertiesTable({ schema }: { schema: any }) {
     if (!schema || !schema.properties) {

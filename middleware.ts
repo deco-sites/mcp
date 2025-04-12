@@ -16,9 +16,9 @@ export const middlewaresFor = (
   listTools: ListToolsMiddleware[];
   callTool: CallToolMiddleware[];
 } => {
-  const checkConfigurationTool = `${appName}_${CHECK_CONFIGURATION_TOOL}`;
-  const configureMcpTool = `${appName}_${CONFIGURE_MCP_TOOL}`;
-
+  const checkConfigurationTool = `${slugify(appName)}_${CHECK_CONFIGURATION_TOOL}`;
+  const configureMcpTool = `${slugify(appName)}_${CONFIGURE_MCP_TOOL}`;
+  
   return {
     callTool: [
       async (req, next) => {
@@ -82,3 +82,7 @@ export const middlewaresFor = (
     }],
   };
 };
+
+function slugify(appName: string) {
+  return appName.replace(/ /g, "_");
+}
