@@ -2,7 +2,7 @@
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "@deco/durable": "jsr:@deco/durable@0.5.3",
-    "@deco/mcp": "jsr:@deco/mcp@0.3.2",
+    "@deco/mcp": "jsr:@deco/mcp@0.3.5",
     "@hono/hono": "jsr:@hono/hono@^4.5.4",
     "@modelcontextprotocol/sdk": "npm:@modelcontextprotocol/sdk@^1.6.1",
     "ajv": "npm:ajv@^8.17.1",
