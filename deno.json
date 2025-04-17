@@ -38,7 +38,8 @@
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
     "dev": "deno run -A --env --unstable-kv --unstable-hmr dev.ts",
-    "reload": "deno cache -r https://deco.cx/run"
+    "reload": "deno cache -r https://deco.cx/run",
+    "compile": "deno compile -o mcp -A --include . main.ts"
   },
   "githooks": {
     "pre-commit": "check"

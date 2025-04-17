@@ -1,4 +1,4 @@
-import { type DecoMCP, MCP } from "../../loaders/mcps/search.ts";
+import { MCP } from "../../loaders/mcps/search.ts";
 import { type ComposioMCP, install } from "../../sdk/composio/index.ts";
 import { installStorage } from "../../apps/site.ts";
 import getMCP from "../../loaders/mcps/get.ts";
@@ -33,7 +33,7 @@ export interface ConfigurationResult {
   /**
    * @description The id of the install
    */
-  installId: string;
+  installId: string | undefined;
   data: {
     /**
      * @description The name of the MCP
@@ -46,7 +46,7 @@ export interface ConfigurationResult {
     /**
      * @description The icon of the MCP
      */
-    icon: string;
+    icon: string | undefined;
     connection: {
       /**
        * @description The URL to connect to the installed MCP
@@ -65,7 +65,7 @@ const subdomain = envName ? `${envName}--${siteName}` : siteName;
 const MY_DOMAIN = Deno.env.get("MY_DOMAIN") || `https://${subdomain}.deco.site`;
 
 const configureDeco = async (
-  integration: DecoMCP,
+  integration: MCP,
   config: Record<string, unknown>,
   installId: string = crypto.randomUUID(),
 ) => {
@@ -100,6 +100,12 @@ const configureComposio = async ({ id }: ComposioMCP) => {
   const url = new URL(urlTemplate);
   const installId = url.pathname.split("/").pop();
 
+  if (!installId) {
+    return {
+      success: false,
+      message: `Failed to get install ID for MCP ${id}`,
+    };
+  }
   await installStorage.setItem(installId, {
     [id]: { type: "object", additionalProperties: true },
   });
@@ -124,12 +130,11 @@ export default async function configureMCP(
     return {
       success: false,
       message: `MCP ${props.id} not found`,
-      data: null,
-    };
+    } as ConfigurationResult;
   }
 
   const { success, connection, installId } = integration.provider === "composio"
-    ? await configureComposio(integration)
+    ? await configureComposio(integration as ComposioMCP)
     : await configureDeco(integration, props.props, props.installId);
 
   return {
@@ -139,7 +144,7 @@ export default async function configureMCP(
       name: integration.name,
       description: integration.description,
       icon: integration.icon,
-      connection,
+      connection: connection || { url: null, type: "HTTP" },
     },
   };
 }

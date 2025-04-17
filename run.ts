@@ -3,6 +3,13 @@ import { connect } from "jsr:@deco/warp";
 import * as colors from "jsr:@std/fmt/colors";
 import { join } from "jsr:@std/path/posix";
 
+globalThis.addEventListener("unhandledrejection", (e: {
+  promise: Promise<unknown>;
+  reason: unknown;
+}) => {
+  console.log("unhandled rejection at:", e.promise, "reason:", e.reason);
+});
+
 export interface TunnelRegisterOptions {
   domain: string;
   port: string;
@@ -156,5 +163,6 @@ await register({
   domain: decoHostDomain,
   port: `${port}`,
 });
+
 await downloadPromise;
 await cmd.output();

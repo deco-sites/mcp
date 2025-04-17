@@ -1,4 +1,4 @@
-import searchMCPs from "./search.ts";
+import searchMCPs, { MCP } from "./search.ts";
 
 /**
  * @name GET

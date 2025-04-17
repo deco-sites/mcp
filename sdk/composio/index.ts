@@ -1,3 +1,4 @@
+import { JSONSchema } from "@deco/deco";
 import registry from "./registry.json" with { type: "json" };
 
 const MCP_URL = "https://mcp.composio.dev";
@@ -8,7 +9,6 @@ export type ComposioMCP = {
   description: string;
   icon: string;
   provider: "composio";
-
   inputSchema: JSONSchema;
   outputSchema: JSONSchema;
 };

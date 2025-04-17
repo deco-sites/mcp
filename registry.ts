@@ -18,7 +18,7 @@ const flags = parseArgs(Deno.args, {
 const isExportDefaultClass = (value: unknown | { default: unknown }) => {
   return typeof value === "object" && value && "default" in value &&
     value.default?.toString().substring(0, 5) === "class";
-}
+};
 let importMap: ReturnType<typeof buildImportMap> | undefined = undefined;
 
 const registerAppModule = async (
@@ -39,7 +39,12 @@ if (flags.apps) {
   for (const appPath of appPaths) {
     const stat = await Deno.stat(appPath);
     if (stat.isDirectory) {
-      for await (const entry of walk(appPath, { exts: [".ts", ".tsx"], includeDirs: false })) {
+      for await (
+        const entry of walk(appPath, {
+          exts: [".ts", ".tsx"],
+          includeDirs: false,
+        })
+      ) {
         const relPath = relative(appPath, entry.path);
         const appTsName = `site/apps/deco/${relPath}`;
         const appFile = `file://${entry.path}`;

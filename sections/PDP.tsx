@@ -461,7 +461,7 @@ export default function PDP({ mcp, error, installation }: Props) {
         .then(() => {
           resetButton();
         })
-        .catch(function (err) {
+        .catch(function (err: Error) {
           console.error("Submit error:", err);
           if (errorElement) {
             errorElement.textContent = "Failed to submit: " + err.message;
@@ -484,7 +484,7 @@ export default function PDP({ mcp, error, installation }: Props) {
     // This function will be called after both the form and editor are initialized
     // It ensures that the initial state is synchronized
     setTimeout(() => {
-      if (globalThis.getFormData && globalThis.monacoEditor) {
+      if ("getFormData" in globalThis && "monacoEditor" in globalThis) {
         const formData = globalThis.getFormData("rjsf-form");
         const editorValue = globalThis.monacoEditor.getValue();
 
@@ -496,14 +496,16 @@ export default function PDP({ mcp, error, installation }: Props) {
             Object.keys(formData).length > 0 &&
             Object.keys(editorJson).length === 0
           ) {
-            globalThis.monacoEditor.setValue(JSON.stringify(formData, null, 2));
+            (globalThis as any).monacoEditor.setValue(
+              JSON.stringify(formData, null, 2),
+            );
           } // If editor has data but form is empty, update form
           else if (
             Object.keys(editorJson).length > 0 &&
             Object.keys(formData).length === 0
           ) {
-            if (globalThis.updateFormData) {
-              globalThis.updateFormData("rjsf-form", editorJson);
+            if ("updateFormData" in globalThis) {
+              (globalThis as any)?.updateFormData?.("rjsf-form", editorJson);
             }
           }
         } catch (err) {
@@ -529,15 +531,15 @@ export default function PDP({ mcp, error, installation }: Props) {
       // Função para alternar entre as visualizações
       function toggleViews() {
         const [toDisplayView, toHiddenView, toDisplayBtn, toHiddenBtn] =
-          formView.classList.contains("hidden")
+          formView?.classList.contains("hidden")
             ? [formView, jsonView, jsonButton, formButton]
             : [jsonView, formView, formButton, jsonButton];
 
-        toDisplayView.classList.remove("hidden");
-        toHiddenView.classList.add("hidden");
+        toDisplayView?.classList.remove("hidden");
+        toHiddenView?.classList.add("hidden");
 
-        toDisplayBtn.classList.remove("hidden");
-        toHiddenBtn.classList.add("hidden");
+        toDisplayBtn?.classList.remove("hidden");
+        toHiddenBtn?.classList.add("hidden");
       }
 
       // Adicionar event listeners aos botões
@@ -711,7 +713,7 @@ export default function PDP({ mcp, error, installation }: Props) {
         {/* Schema Properties Table */}
         <SchemaPropertiesTable schema={mcp.inputSchema} />
 
-        <form method="POST" onsubmit={handleClick}>
+        <form method="POST" onSubmit={handleClick}>
           <div class="mb-4">
             <label class="block text-gray-700 text-sm font-bold mb-2">
               Configuration JSON

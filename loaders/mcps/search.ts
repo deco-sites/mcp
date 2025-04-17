@@ -3,7 +3,9 @@ import { getTools, Tool } from "@deco/mcp";
 import { list } from "../../sdk/composio/index.ts";
 
 export interface MCP extends Tool {
+  provider: string;
   resolveType: string;
+  id: string;
 }
 
 const listFromComposio = list;
