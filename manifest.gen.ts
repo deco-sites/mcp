@@ -13,14 +13,15 @@ import * as $$$$$$$$$$$5 from "./apps/deco/perplexity.ts";
 import * as $$$$$$$$$$$6 from "./apps/deco/readwise.ts";
 import * as $$$$$$$$$$$7 from "./apps/deco/reflect.ts";
 import * as $$$$$$$$$$$8 from "./apps/deco/resend.ts";
-import * as $$$$$$$$$$$9 from "./apps/deco/slack.ts";
-import * as $$$$$$$$$$$10 from "./apps/deco/stability.ts";
-import * as $$$$$$$$$$$11 from "./apps/deco/tiptap-cloud.ts";
-import * as $$$$$$$$$$$12 from "./apps/deco/vertex.ts";
-import * as $$$$$$$$$$$13 from "./apps/deco/vidu.ts";
-import * as $$$$$$$$$$$14 from "./apps/deco/vnda.ts";
-import * as $$$$$$$$$$$15 from "./apps/deco/vtex.ts";
-import * as $$$$$$$$$$$16 from "./apps/site.ts";
+import * as $$$$$$$$$$$9 from "./apps/deco/serper.ts";
+import * as $$$$$$$$$$$10 from "./apps/deco/slack.ts";
+import * as $$$$$$$$$$$11 from "./apps/deco/stability.ts";
+import * as $$$$$$$$$$$12 from "./apps/deco/tiptap-cloud.ts";
+import * as $$$$$$$$$$$13 from "./apps/deco/vertex.ts";
+import * as $$$$$$$$$$$14 from "./apps/deco/vidu.ts";
+import * as $$$$$$$$$$$15 from "./apps/deco/vnda.ts";
+import * as $$$$$$$$$$$16 from "./apps/deco/vtex.ts";
+import * as $$$$$$$$$$$17 from "./apps/site.ts";
 import * as $$$0 from "./loaders/mcps/get.ts";
 import * as $$$1 from "./loaders/mcps/search.ts";
 import * as $$$$$$0 from "./sections/Component.tsx";
@@ -53,14 +54,15 @@ const manifest = {
     "site/apps/deco/readwise.ts": $$$$$$$$$$$6,
     "site/apps/deco/reflect.ts": $$$$$$$$$$$7,
     "site/apps/deco/resend.ts": $$$$$$$$$$$8,
-    "site/apps/deco/slack.ts": $$$$$$$$$$$9,
-    "site/apps/deco/stability.ts": $$$$$$$$$$$10,
-    "site/apps/deco/tiptap-cloud.ts": $$$$$$$$$$$11,
-    "site/apps/deco/vertex.ts": $$$$$$$$$$$12,
-    "site/apps/deco/vidu.ts": $$$$$$$$$$$13,
-    "site/apps/deco/vnda.ts": $$$$$$$$$$$14,
-    "site/apps/deco/vtex.ts": $$$$$$$$$$$15,
-    "site/apps/site.ts": $$$$$$$$$$$16,
+    "site/apps/deco/serper.ts": $$$$$$$$$$$9,
+    "site/apps/deco/slack.ts": $$$$$$$$$$$10,
+    "site/apps/deco/stability.ts": $$$$$$$$$$$11,
+    "site/apps/deco/tiptap-cloud.ts": $$$$$$$$$$$12,
+    "site/apps/deco/vertex.ts": $$$$$$$$$$$13,
+    "site/apps/deco/vidu.ts": $$$$$$$$$$$14,
+    "site/apps/deco/vnda.ts": $$$$$$$$$$$15,
+    "site/apps/deco/vtex.ts": $$$$$$$$$$$16,
+    "site/apps/site.ts": $$$$$$$$$$$17,
   },
   "name": "site",
   "baseUrl": import.meta.url,
