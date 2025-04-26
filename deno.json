@@ -14,7 +14,7 @@
     "preact-render-to-string": "npm:preact-render-to-string@6.4.2",
     "@std/http": "jsr:@std/http@^1.0.13",
     "std/": "https://deno.land/std@0.190.0/",
-    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.79.1/",
+    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.79.0/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
     "@deco/htmx": "https://denopkg.com/deco-cx/apps@0.76.4/htmx/mod.ts",
