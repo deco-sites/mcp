@@ -6,17 +6,17 @@ import * as $$$$$$$$$0 from "./actions/mcps/check.ts";
 import * as $$$$$$$$$1 from "./actions/mcps/configure.ts";
 import * as $$$$$$$$$$$0 from "./apps/deco/1001fx.ts";
 import * as $$$$$$$$$$$1 from "./apps/deco/brasilapi.ts";
-import * as $$$$$$$$$$$2 from "./apps/deco/browser-use.ts";
-import * as $$$$$$$$$$$3 from "./apps/deco/deno-deploy.ts";
-import * as $$$$$$$$$$$4 from "./apps/deco/elevenlabs.ts";
-import * as $$$$$$$$$$$5 from "./apps/deco/exa.ts";
-import * as $$$$$$$$$$$6 from "./apps/deco/figma.ts";
-import * as $$$$$$$$$$$7 from "./apps/deco/grain.ts";
-import * as $$$$$$$$$$$8 from "./apps/deco/htmx.ts";
-import * as $$$$$$$$$$$9 from "./apps/deco/jira.ts";
-import * as $$$$$$$$$$$10 from "./apps/deco/js-bundler.ts";
-import * as $$$$$$$$$$$11 from "./apps/deco/openai.ts";
-import * as $$$$$$$$$$$12 from "./apps/deco/perplexity.ts";
+import * as $$$$$$$$$$$2 from "./apps/deco/deno-deploy.ts";
+import * as $$$$$$$$$$$3 from "./apps/deco/elevenlabs.ts";
+import * as $$$$$$$$$$$4 from "./apps/deco/exa.ts";
+import * as $$$$$$$$$$$5 from "./apps/deco/figma.ts";
+import * as $$$$$$$$$$$6 from "./apps/deco/grain.ts";
+import * as $$$$$$$$$$$7 from "./apps/deco/htmx.ts";
+import * as $$$$$$$$$$$8 from "./apps/deco/jira.ts";
+import * as $$$$$$$$$$$9 from "./apps/deco/js-bundler.ts";
+import * as $$$$$$$$$$$10 from "./apps/deco/openai.ts";
+import * as $$$$$$$$$$$11 from "./apps/deco/perplexity.ts";
+import * as $$$$$$$$$$$12 from "./apps/deco/rd-station-marketing.ts";
 import * as $$$$$$$$$$$13 from "./apps/deco/readwise.ts";
 import * as $$$$$$$$$$$14 from "./apps/deco/reflect.ts";
 import * as $$$$$$$$$$$15 from "./apps/deco/resend.ts";
@@ -54,17 +54,17 @@ const manifest = {
   "apps": {
     "site/apps/deco/1001fx.ts": $$$$$$$$$$$0,
     "site/apps/deco/brasilapi.ts": $$$$$$$$$$$1,
-    "site/apps/deco/browser-use.ts": $$$$$$$$$$$2,
-    "site/apps/deco/deno-deploy.ts": $$$$$$$$$$$3,
-    "site/apps/deco/elevenlabs.ts": $$$$$$$$$$$4,
-    "site/apps/deco/exa.ts": $$$$$$$$$$$5,
-    "site/apps/deco/figma.ts": $$$$$$$$$$$6,
-    "site/apps/deco/grain.ts": $$$$$$$$$$$7,
-    "site/apps/deco/htmx.ts": $$$$$$$$$$$8,
-    "site/apps/deco/jira.ts": $$$$$$$$$$$9,
-    "site/apps/deco/js-bundler.ts": $$$$$$$$$$$10,
-    "site/apps/deco/openai.ts": $$$$$$$$$$$11,
-    "site/apps/deco/perplexity.ts": $$$$$$$$$$$12,
+    "site/apps/deco/deno-deploy.ts": $$$$$$$$$$$2,
+    "site/apps/deco/elevenlabs.ts": $$$$$$$$$$$3,
+    "site/apps/deco/exa.ts": $$$$$$$$$$$4,
+    "site/apps/deco/figma.ts": $$$$$$$$$$$5,
+    "site/apps/deco/grain.ts": $$$$$$$$$$$6,
+    "site/apps/deco/htmx.ts": $$$$$$$$$$$7,
+    "site/apps/deco/jira.ts": $$$$$$$$$$$8,
+    "site/apps/deco/js-bundler.ts": $$$$$$$$$$$9,
+    "site/apps/deco/openai.ts": $$$$$$$$$$$10,
+    "site/apps/deco/perplexity.ts": $$$$$$$$$$$11,
+    "site/apps/deco/rd-station-marketing.ts": $$$$$$$$$$$12,
     "site/apps/deco/readwise.ts": $$$$$$$$$$$13,
     "site/apps/deco/reflect.ts": $$$$$$$$$$$14,
     "site/apps/deco/resend.ts": $$$$$$$$$$$15,
