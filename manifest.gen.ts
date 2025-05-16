@@ -24,12 +24,13 @@ import * as $$$$$$$$$$$16 from "./apps/deco/resend.ts";
 import * as $$$$$$$$$$$17 from "./apps/deco/serper.ts";
 import * as $$$$$$$$$$$18 from "./apps/deco/slack.ts";
 import * as $$$$$$$$$$$19 from "./apps/deco/stability.ts";
-import * as $$$$$$$$$$$20 from "./apps/deco/tiptap-cloud.ts";
-import * as $$$$$$$$$$$21 from "./apps/deco/vertex.ts";
-import * as $$$$$$$$$$$22 from "./apps/deco/vidu.ts";
-import * as $$$$$$$$$$$23 from "./apps/deco/vnda.ts";
-import * as $$$$$$$$$$$24 from "./apps/deco/vtex.ts";
-import * as $$$$$$$$$$$25 from "./apps/site.ts";
+import * as $$$$$$$$$$$20 from "./apps/deco/tiny.ts";
+import * as $$$$$$$$$$$21 from "./apps/deco/tiptap-cloud.ts";
+import * as $$$$$$$$$$$22 from "./apps/deco/vertex.ts";
+import * as $$$$$$$$$$$23 from "./apps/deco/vidu.ts";
+import * as $$$$$$$$$$$24 from "./apps/deco/vnda.ts";
+import * as $$$$$$$$$$$25 from "./apps/deco/vtex.ts";
+import * as $$$$$$$$$$$26 from "./apps/site.ts";
 import * as $$$0 from "./loaders/mcps/get.ts";
 import * as $$$1 from "./loaders/mcps/search.ts";
 import * as $$$$$$0 from "./sections/Component.tsx";
@@ -73,12 +74,13 @@ const manifest = {
     "site/apps/deco/serper.ts": $$$$$$$$$$$17,
     "site/apps/deco/slack.ts": $$$$$$$$$$$18,
     "site/apps/deco/stability.ts": $$$$$$$$$$$19,
-    "site/apps/deco/tiptap-cloud.ts": $$$$$$$$$$$20,
-    "site/apps/deco/vertex.ts": $$$$$$$$$$$21,
-    "site/apps/deco/vidu.ts": $$$$$$$$$$$22,
-    "site/apps/deco/vnda.ts": $$$$$$$$$$$23,
-    "site/apps/deco/vtex.ts": $$$$$$$$$$$24,
-    "site/apps/site.ts": $$$$$$$$$$$25,
+    "site/apps/deco/tiny.ts": $$$$$$$$$$$20,
+    "site/apps/deco/tiptap-cloud.ts": $$$$$$$$$$$21,
+    "site/apps/deco/vertex.ts": $$$$$$$$$$$22,
+    "site/apps/deco/vidu.ts": $$$$$$$$$$$23,
+    "site/apps/deco/vnda.ts": $$$$$$$$$$$24,
+    "site/apps/deco/vtex.ts": $$$$$$$$$$$25,
+    "site/apps/site.ts": $$$$$$$$$$$26,
   },
   "name": "site",
   "baseUrl": import.meta.url,
