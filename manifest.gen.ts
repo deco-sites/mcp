@@ -6,37 +6,38 @@ import * as $$$$$$$$$0 from "./actions/mcps/check.ts";
 import * as $$$$$$$$$1 from "./actions/mcps/configure.ts";
 import * as $$$$$$$$$$$0 from "./apps/deco/1001fx.ts";
 import * as $$$$$$$$$$$1 from "./apps/deco/airtable.ts";
-import * as $$$$$$$$$$$2 from "./apps/deco/brasilapi.ts";
-import * as $$$$$$$$$$$3 from "./apps/deco/browser-use.ts";
-import * as $$$$$$$$$$$4 from "./apps/deco/deno-deploy.ts";
-import * as $$$$$$$$$$$5 from "./apps/deco/discohook.ts";
-import * as $$$$$$$$$$$6 from "./apps/deco/elevenlabs.ts";
-import * as $$$$$$$$$$$7 from "./apps/deco/exa.ts";
-import * as $$$$$$$$$$$8 from "./apps/deco/figma.ts";
-import * as $$$$$$$$$$$9 from "./apps/deco/github.ts";
-import * as $$$$$$$$$$$10 from "./apps/deco/google-gmail.ts";
-import * as $$$$$$$$$$$11 from "./apps/deco/google-sheets.ts";
-import * as $$$$$$$$$$$12 from "./apps/deco/grain.ts";
-import * as $$$$$$$$$$$13 from "./apps/deco/htmx.ts";
-import * as $$$$$$$$$$$14 from "./apps/deco/jira.ts";
-import * as $$$$$$$$$$$15 from "./apps/deco/js-bundler.ts";
-import * as $$$$$$$$$$$16 from "./apps/deco/openai.ts";
-import * as $$$$$$$$$$$17 from "./apps/deco/perplexity.ts";
-import * as $$$$$$$$$$$18 from "./apps/deco/rd-station-marketing.ts";
-import * as $$$$$$$$$$$19 from "./apps/deco/readwise.ts";
-import * as $$$$$$$$$$$20 from "./apps/deco/reflect.ts";
-import * as $$$$$$$$$$$21 from "./apps/deco/resend.ts";
-import * as $$$$$$$$$$$22 from "./apps/deco/serper.ts";
-import * as $$$$$$$$$$$23 from "./apps/deco/slack.ts";
-import * as $$$$$$$$$$$24 from "./apps/deco/stability.ts";
-import * as $$$$$$$$$$$25 from "./apps/deco/tiny.ts";
-import * as $$$$$$$$$$$26 from "./apps/deco/tiptap-cloud.ts";
-import * as $$$$$$$$$$$27 from "./apps/deco/turso-db.ts";
-import * as $$$$$$$$$$$28 from "./apps/deco/vertex.ts";
-import * as $$$$$$$$$$$29 from "./apps/deco/vidu.ts";
-import * as $$$$$$$$$$$30 from "./apps/deco/vnda.ts";
-import * as $$$$$$$$$$$31 from "./apps/deco/vtex.ts";
-import * as $$$$$$$$$$$32 from "./apps/site.ts";
+import * as $$$$$$$$$$$2 from "./apps/deco/aws.ts";
+import * as $$$$$$$$$$$3 from "./apps/deco/brasilapi.ts";
+import * as $$$$$$$$$$$4 from "./apps/deco/browser-use.ts";
+import * as $$$$$$$$$$$5 from "./apps/deco/deno-deploy.ts";
+import * as $$$$$$$$$$$6 from "./apps/deco/discohook.ts";
+import * as $$$$$$$$$$$7 from "./apps/deco/elevenlabs.ts";
+import * as $$$$$$$$$$$8 from "./apps/deco/exa.ts";
+import * as $$$$$$$$$$$9 from "./apps/deco/figma.ts";
+import * as $$$$$$$$$$$10 from "./apps/deco/github.ts";
+import * as $$$$$$$$$$$11 from "./apps/deco/google-gmail.ts";
+import * as $$$$$$$$$$$12 from "./apps/deco/google-sheets.ts";
+import * as $$$$$$$$$$$13 from "./apps/deco/grain.ts";
+import * as $$$$$$$$$$$14 from "./apps/deco/htmx.ts";
+import * as $$$$$$$$$$$15 from "./apps/deco/jira.ts";
+import * as $$$$$$$$$$$16 from "./apps/deco/js-bundler.ts";
+import * as $$$$$$$$$$$17 from "./apps/deco/openai.ts";
+import * as $$$$$$$$$$$18 from "./apps/deco/perplexity.ts";
+import * as $$$$$$$$$$$19 from "./apps/deco/rd-station-marketing.ts";
+import * as $$$$$$$$$$$20 from "./apps/deco/readwise.ts";
+import * as $$$$$$$$$$$21 from "./apps/deco/reflect.ts";
+import * as $$$$$$$$$$$22 from "./apps/deco/resend.ts";
+import * as $$$$$$$$$$$23 from "./apps/deco/serper.ts";
+import * as $$$$$$$$$$$24 from "./apps/deco/slack.ts";
+import * as $$$$$$$$$$$25 from "./apps/deco/stability.ts";
+import * as $$$$$$$$$$$26 from "./apps/deco/tiny.ts";
+import * as $$$$$$$$$$$27 from "./apps/deco/tiptap-cloud.ts";
+import * as $$$$$$$$$$$28 from "./apps/deco/turso-db.ts";
+import * as $$$$$$$$$$$29 from "./apps/deco/vertex.ts";
+import * as $$$$$$$$$$$30 from "./apps/deco/vidu.ts";
+import * as $$$$$$$$$$$31 from "./apps/deco/vnda.ts";
+import * as $$$$$$$$$$$32 from "./apps/deco/vtex.ts";
+import * as $$$$$$$$$$$33 from "./apps/site.ts";
 import * as $$$0 from "./loaders/mcps/get.ts";
 import * as $$$1 from "./loaders/mcps/search.ts";
 import * as $$$$$$0 from "./sections/Component.tsx";
@@ -62,37 +63,38 @@ const manifest = {
   "apps": {
     "site/apps/deco/1001fx.ts": $$$$$$$$$$$0,
     "site/apps/deco/airtable.ts": $$$$$$$$$$$1,
-    "site/apps/deco/brasilapi.ts": $$$$$$$$$$$2,
-    "site/apps/deco/browser-use.ts": $$$$$$$$$$$3,
-    "site/apps/deco/deno-deploy.ts": $$$$$$$$$$$4,
-    "site/apps/deco/discohook.ts": $$$$$$$$$$$5,
-    "site/apps/deco/elevenlabs.ts": $$$$$$$$$$$6,
-    "site/apps/deco/exa.ts": $$$$$$$$$$$7,
-    "site/apps/deco/figma.ts": $$$$$$$$$$$8,
-    "site/apps/deco/github.ts": $$$$$$$$$$$9,
-    "site/apps/deco/google-gmail.ts": $$$$$$$$$$$10,
-    "site/apps/deco/google-sheets.ts": $$$$$$$$$$$11,
-    "site/apps/deco/grain.ts": $$$$$$$$$$$12,
-    "site/apps/deco/htmx.ts": $$$$$$$$$$$13,
-    "site/apps/deco/jira.ts": $$$$$$$$$$$14,
-    "site/apps/deco/js-bundler.ts": $$$$$$$$$$$15,
-    "site/apps/deco/openai.ts": $$$$$$$$$$$16,
-    "site/apps/deco/perplexity.ts": $$$$$$$$$$$17,
-    "site/apps/deco/rd-station-marketing.ts": $$$$$$$$$$$18,
-    "site/apps/deco/readwise.ts": $$$$$$$$$$$19,
-    "site/apps/deco/reflect.ts": $$$$$$$$$$$20,
-    "site/apps/deco/resend.ts": $$$$$$$$$$$21,
-    "site/apps/deco/serper.ts": $$$$$$$$$$$22,
-    "site/apps/deco/slack.ts": $$$$$$$$$$$23,
-    "site/apps/deco/stability.ts": $$$$$$$$$$$24,
-    "site/apps/deco/tiny.ts": $$$$$$$$$$$25,
-    "site/apps/deco/tiptap-cloud.ts": $$$$$$$$$$$26,
-    "site/apps/deco/turso-db.ts": $$$$$$$$$$$27,
-    "site/apps/deco/vertex.ts": $$$$$$$$$$$28,
-    "site/apps/deco/vidu.ts": $$$$$$$$$$$29,
-    "site/apps/deco/vnda.ts": $$$$$$$$$$$30,
-    "site/apps/deco/vtex.ts": $$$$$$$$$$$31,
-    "site/apps/site.ts": $$$$$$$$$$$32,
+    "site/apps/deco/aws.ts": $$$$$$$$$$$2,
+    "site/apps/deco/brasilapi.ts": $$$$$$$$$$$3,
+    "site/apps/deco/browser-use.ts": $$$$$$$$$$$4,
+    "site/apps/deco/deno-deploy.ts": $$$$$$$$$$$5,
+    "site/apps/deco/discohook.ts": $$$$$$$$$$$6,
+    "site/apps/deco/elevenlabs.ts": $$$$$$$$$$$7,
+    "site/apps/deco/exa.ts": $$$$$$$$$$$8,
+    "site/apps/deco/figma.ts": $$$$$$$$$$$9,
+    "site/apps/deco/github.ts": $$$$$$$$$$$10,
+    "site/apps/deco/google-gmail.ts": $$$$$$$$$$$11,
+    "site/apps/deco/google-sheets.ts": $$$$$$$$$$$12,
+    "site/apps/deco/grain.ts": $$$$$$$$$$$13,
+    "site/apps/deco/htmx.ts": $$$$$$$$$$$14,
+    "site/apps/deco/jira.ts": $$$$$$$$$$$15,
+    "site/apps/deco/js-bundler.ts": $$$$$$$$$$$16,
+    "site/apps/deco/openai.ts": $$$$$$$$$$$17,
+    "site/apps/deco/perplexity.ts": $$$$$$$$$$$18,
+    "site/apps/deco/rd-station-marketing.ts": $$$$$$$$$$$19,
+    "site/apps/deco/readwise.ts": $$$$$$$$$$$20,
+    "site/apps/deco/reflect.ts": $$$$$$$$$$$21,
+    "site/apps/deco/resend.ts": $$$$$$$$$$$22,
+    "site/apps/deco/serper.ts": $$$$$$$$$$$23,
+    "site/apps/deco/slack.ts": $$$$$$$$$$$24,
+    "site/apps/deco/stability.ts": $$$$$$$$$$$25,
+    "site/apps/deco/tiny.ts": $$$$$$$$$$$26,
+    "site/apps/deco/tiptap-cloud.ts": $$$$$$$$$$$27,
+    "site/apps/deco/turso-db.ts": $$$$$$$$$$$28,
+    "site/apps/deco/vertex.ts": $$$$$$$$$$$29,
+    "site/apps/deco/vidu.ts": $$$$$$$$$$$30,
+    "site/apps/deco/vnda.ts": $$$$$$$$$$$31,
+    "site/apps/deco/vtex.ts": $$$$$$$$$$$32,
+    "site/apps/site.ts": $$$$$$$$$$$33,
   },
   "name": "site",
   "baseUrl": import.meta.url,
