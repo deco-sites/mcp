@@ -166,25 +166,34 @@ export async function decoInstance(
         );
         withOAuth(
           mcp,
+        );        
+        const mcpResult = mcpServer(
+          deco,
+          appName && installId
+            ? {
+              middlewares: middlewaresFor({ appName, installId }),
+              basePath,
+            }
+            : {
+              include: [
+                "site/loaders/mcps/search.ts" as const,
+                "site/actions/mcps/configure.ts" as const,
+                "site/actions/mcps/check.ts" as const,
+              ],
+            },
         );
-        hono.use(
-          "/*",
-          mcpServer(
-            deco,
-            appName && installId
-              ? {
-                middlewares: middlewaresFor({ appName, installId }),
-                basePath,
-              }
-              : {
-                include: [
-                  "site/loaders/mcps/search.ts" as const,
-                  "site/actions/mcps/configure.ts" as const,
-                  "site/actions/mcps/check.ts" as const,
-                ],
-              },
-          ),
-        ); // some type errors may occur
+
+        const { middleware: mcpMiddleware, server: mcpServerInstance } = mcpResult;
+        
+        hono.use("/*", async (_c, next) => {
+          const c = _c as unknown as Context<MCPState>;
+          const global = (c.var.global ?? {}) as Record<string, unknown>;
+          global.mcpServer = mcpServerInstance;
+          c.set("global", global);
+          await next();
+        });
+        
+        hono.use("/*", mcpMiddleware);
       },
     },
   }).then((deco) => ({
