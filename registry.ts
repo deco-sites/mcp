@@ -176,7 +176,7 @@ export async function decoInstance(
             deco,
             appName && installId
               ? {
-                middlewares: middlewaresFor({ appName, installId, instance }),
+                middlewares: middlewaresFor({ appName, installId }),
                 basePath,
               }
               : {

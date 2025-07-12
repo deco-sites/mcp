@@ -1,7 +1,7 @@
 import { Hono } from "@hono/hono";
 import { env } from "@hono/hono/adapter";
-import { MCPInstance, MCPState } from "./registry.ts";
-import { findCompatibleApp, invoke, parseInvokeResponse } from "./utils.ts";
+import { MCPState } from "./registry.ts";
+import { findCompatibleApp, invoke } from "./utils.ts";
 
 const OAUTH_START_LOADER = "/loaders/oauth/start.ts";
 const OAUTH_CALLBACK_ACTION = "/actions/oauth/callback.ts";
@@ -106,64 +106,6 @@ const getOAuthConfigForApp = (appName: string) => {
   return provider ? WELL_KNOWN_OAUTH_APPS[provider] : null;
 };
 
-interface OAuthStartParams {
-  appName: string;
-  returnUrl?: string | null;
-  installId: string;
-  instance: MCPInstance;
-  envVars: Record<string, unknown>;
-  invoke: MCPState["Variables"]["invoke"];
-}
-
-// deno-lint-ignore no-explicit-any
-export const startOAuth = async (params: OAuthStartParams): Promise<any> => {
-  const { appName, installId, instance, returnUrl, envVars } = params;
-
-  const redirectUri = new URL(
-    `/oauth/callback`,
-    "https://mcp.deco.site",
-  );
-
-  const invokeApp = await findCompatibleApp(
-    instance,
-    OAUTH_START_LOADER,
-  );
-
-  if (!invokeApp) {
-    return null;
-  }
-
-  const oauthApp = getOAuthConfigForApp(appName);
-
-  if (!oauthApp) {
-    return null;
-  }
-
-  const clientId = envVars[oauthApp.clientIdKey];
-  const scopes = oauthApp.scopes;
-
-  const state = StateBuilder.build(
-    appName,
-    installId,
-    invokeApp,
-    returnUrl,
-    redirectUri.href,
-  );
-  const oauthStartLoader = `${invokeApp}${OAUTH_START_LOADER}`;
-  const props = {
-    installId,
-    appName,
-    redirectUri,
-    state,
-    returnUrl,
-    clientId,
-    scopes,
-  };
-
-  // deno-lint-ignore no-explicit-any
-  return await params.invoke(oauthStartLoader, props as any);
-};
-
 export const withOAuth = (
   app: Hono<
     MCPState
@@ -172,24 +114,54 @@ export const withOAuth = (
   app.get("/oauth/start", async (c) => {
     const appName = c.var.appName;
     const installId = c.var.installId;
-    const envVars = env(c);
-    const url = new URL(c.req.url);
-    const returnUrl = url.searchParams.get("returnUrl");
 
-    const result = await startOAuth({
-      returnUrl,
-      appName,
-      installId,
-      instance: c.var.instance,
-      envVars,
-      invoke: c.var.invoke.bind(c.var.invoke),
-    });
+    const reqUrl = new URL(c.req.url);
+    const redirectUri = new URL(
+      `/oauth/callback`,
+      c.req.url,
+    );
 
-    if (!result) {
+    redirectUri.protocol = "https:";
+
+    const returnUrl = reqUrl.searchParams.get("returnUrl");
+    const invokeApp = await findCompatibleApp(
+      c.var.instance,
+      OAUTH_START_LOADER,
+    );
+
+    if (!invokeApp) {
       return c.json({ error: "App not found" }, 404);
     }
 
-    return parseInvokeResponse(result, c) ??
+    const envVars = env(c);
+    const oauthApp = getOAuthConfigForApp(appName);
+
+    if (!oauthApp) {
+      return c.json({ error: `App ${appName} not supported` }, 404);
+    }
+
+    const clientId = envVars[oauthApp.clientIdKey];
+    const scopes = oauthApp.scopes;
+
+    const state = StateBuilder.build(
+      appName,
+      installId,
+      invokeApp,
+      returnUrl,
+      redirectUri.href,
+    );
+    const oauthStartLoader = `${invokeApp}${OAUTH_START_LOADER}`;
+    const props = {
+      installId,
+      appName,
+      redirectUri,
+      state,
+      returnUrl,
+      clientId,
+      scopes,
+    };
+
+    return await invoke(oauthStartLoader, props, c) ??
       new Response(null, { status: 204 });
   });
   app.get("/oauth/callback", async (c) => {

@@ -33,10 +33,12 @@ export const findCompatibleApp = async (
     : undefined;
 };
 
-export const parseInvokeResponse = (
-  response: unknown,
+export const invoke = async (
+  key: string,
+  props: any,
   c: HonoContext<MCPState>,
-) => {
+): Promise<Response | null> => {
+  const response: unknown = await c.var.invoke(key, props);
   if (response instanceof Response) {
     return response;
   }
@@ -48,13 +50,6 @@ export const parseInvokeResponse = (
   if (typeof response === "object") {
     return c.json(response);
   }
+
   return null;
-};
-export const invoke = async (
-  key: string,
-  props: any,
-  c: HonoContext<MCPState>,
-): Promise<Response | null> => {
-  const response: unknown = await c.var.invoke(key, props);
-  return parseInvokeResponse(response, c);
 };
