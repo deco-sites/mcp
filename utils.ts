@@ -2,32 +2,7 @@
 import { Context } from "@deco/deco";
 import { getTools } from "@deco/mcp";
 import { Context as HonoContext } from "@hono/hono";
-import { MCP_REGISTRY, MCPInstance, MCPState } from "./registry.ts";
-import type { MCP } from "./loaders/mcps/search.ts";
-
-export const listFromDeco = async () => {
-  const names = new Map<string, string>();
-  const schemas = await MCP_REGISTRY?.meta();
-
-  const tools = getTools(
-    names,
-    schemas?.value.schema,
-    { blocks: ["apps"] },
-    schemas?.value?.manifest?.blocks?.apps,
-  );
-
-  const list = tools.filter((t) =>
-    t.name !== "site-apps-deco-htmx-ts" && t.name !== "JS_BUNDLER"
-  ) as MCP[];
-
-  return list;
-};
-
-export const schemaFromAppName = async (appName: string) => {
-  const deco = await listFromDeco();
-  const schema = deco.find((d) => d.name === appName)?.inputSchema;
-  return schema;
-};
+import { MCPInstance, MCPState } from "./registry.ts";
 
 export const findCompatibleApp = async (
   instance: MCPInstance,

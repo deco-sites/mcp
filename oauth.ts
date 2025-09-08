@@ -1,12 +1,7 @@
 import { Hono } from "@hono/hono";
 import { env } from "@hono/hono/adapter";
 import { MCPInstance, MCPState } from "./registry.ts";
-import {
-  findCompatibleApp,
-  invoke,
-  parseInvokeResponse,
-  schemaFromAppName,
-} from "./utils.ts";
+import { findCompatibleApp, invoke, parseInvokeResponse } from "./utils.ts";
 
 const OAUTH_START_LOADER = "/loaders/oauth/start.ts";
 const OAUTH_CALLBACK_ACTION = "/actions/oauth/callback.ts";
@@ -140,12 +135,6 @@ export const startOAuth = async (params: OAuthStartParams): Promise<any> => {
   );
 
   if (!invokeApp) {
-    const stateSchema = await schemaFromAppName(appName);
-    if (stateSchema) {
-      return {
-        stateSchema,
-      };
-    }
     return null;
   }
 

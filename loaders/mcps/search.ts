@@ -1,6 +1,6 @@
-import { Tool } from "@deco/mcp";
+import { MCP_REGISTRY } from "../../registry.ts";
+import { getTools, Tool } from "@deco/mcp";
 import { list } from "../../sdk/composio/index.ts";
-import { listFromDeco } from "../../utils.ts";
 
 export interface MCP extends Tool {
   provider: string;
@@ -9,6 +9,24 @@ export interface MCP extends Tool {
 }
 
 const listFromComposio = list;
+
+const listFromDeco = async () => {
+  const names = new Map<string, string>();
+  const schemas = await MCP_REGISTRY?.meta();
+
+  const tools = getTools(
+    names,
+    schemas?.value.schema,
+    { blocks: ["apps"] },
+    schemas?.value?.manifest?.blocks?.apps,
+  );
+
+  const list = tools.filter((t) =>
+    t.name !== "site-apps-deco-htmx-ts" && t.name !== "JS_BUNDLER"
+  ) as MCP[];
+
+  return list;
+};
 
 const matcher = (query: string) => {
   const lower = query.toLowerCase();
