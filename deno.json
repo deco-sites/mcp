@@ -4,7 +4,6 @@
     "@deco/durable": "jsr:@deco/durable@0.5.3",
     "@deco/mcp": "jsr:@deco/mcp@0.7.3",
     "@hono/hono": "jsr:@hono/hono@^4.5.4",
-    "jose": "npm:jose@^6.1.0",
     "site/": "./",
     "@modelcontextprotocol/sdk": "npm:@modelcontextprotocol/sdk@^1.6.1",
     "ajv": "npm:ajv@^8.17.1",

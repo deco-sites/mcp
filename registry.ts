@@ -13,7 +13,6 @@ import { withChannelHooks } from "./channels.ts";
 import manifest, { Manifest } from "./manifest.gen.ts";
 import { middlewaresFor } from "./middleware.ts";
 import { withOAuth } from "./oauth.ts";
-import { getInstallState } from "./utils.ts";
 
 const flags = parseArgs(Deno.args, {
   string: ["apps", "static-root"],
@@ -98,8 +97,8 @@ export async function decoInstance(
 
   let form = null;
   if (installId) {
-    form = await getInstallState(installId, appName);
-    if (!form) {
+    form = await installStorage.getItem(installId);
+    if (form == null) {
       await configure({
         id: appName!,
         installId,
@@ -151,7 +150,7 @@ export async function decoInstance(
             }
             let currentForm = form;
             if (installId) {
-              currentForm = await getInstallState(installId, appName);
+              currentForm = await installStorage.getItem(installId);
             }
             const { [appName]: config } = currentForm as any ??
               {};

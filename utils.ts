@@ -4,8 +4,6 @@ import { getTools } from "@deco/mcp";
 import { Context as HonoContext } from "@hono/hono";
 import { MCP_REGISTRY, MCPInstance, MCPState } from "./registry.ts";
 import type { MCP } from "./loaders/mcps/search.ts";
-import { decodeJwt } from "jose";
-import { installStorage } from "./apps/site.ts";
 
 export const listFromDeco = async () => {
   const names = new Map<string, string>();
@@ -23,21 +21,6 @@ export const listFromDeco = async () => {
   ) as MCP[];
 
   return list;
-};
-
-const tryDecodeJwt = (installId: string) => {
-  try {
-    return decodeJwt(installId);
-  } catch {
-    return null;
-  }
-};
-export const getInstallState = async (installId: string, appName?: string) => {
-  const jwt = tryDecodeJwt(installId);
-  if (jwt && "state" in jwt && appName) {
-    return { [appName]: jwt.state };
-  }
-  return await installStorage.getItem(installId);
 };
 
 export const schemaFromAppName = async (appName: string) => {

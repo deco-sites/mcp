@@ -33,10 +33,10 @@ const OAUTH_TOOL: Tool = {
   outputSchema: {
     type: "object",
     properties: {
-      redirectUrl: { type: "string" },
+      redirectUri: { type: "string" },
     },
-    required: ["redirectUrl"],
-    additionalProperties: true,
+    required: ["redirectUri"],
+    additionalProperties: false,
   },
 };
 export const middlewaresFor = (
@@ -78,22 +78,13 @@ export const middlewaresFor = (
               );
             }) as MCPState["Variables"]["invoke"],
           });
-          let result = {
-            redirectUrl: null,
+          const url = response && typeof response === "object" &&
+              response instanceof Response
+            ? response.headers.get("Location")
+            : null;
+          const result = {
+            redirectUrl: url,
           };
-          if (
-            response && typeof response === "object" &&
-            "stateSchema" in response && response.stateSchema
-          ) {
-            result = response;
-          } else if (
-            response && typeof response === "object" &&
-            response instanceof Response
-          ) {
-            result = {
-              redirectUrl: response.headers.get("Location"),
-            };
-          }
           return {
             content: [{
               type: "text",
