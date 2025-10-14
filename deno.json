@@ -6,7 +6,7 @@
     "@hono/hono": "jsr:@hono/hono@^4.5.4",
     "jose": "npm:jose@^6.1.0",
     "site/": "./",
-    "@modelcontextprotocol/sdk": "npm:@modelcontextprotocol/sdk@^1.6.1",
+    "@modelcontextprotocol/sdk": "npm:@modelcontextprotocol/sdk@1.18.2",
     "ajv": "npm:ajv@^8.17.1",
     "lru-cache": "npm:lru-cache@^11.1.0",
     "preact": "npm:preact@10.23.1",
