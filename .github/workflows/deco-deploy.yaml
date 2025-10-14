@@ -23,9 +23,9 @@ jobs:
         with:
           build_cmd: "deno run -A dev.ts build --unstable-kv"
 
-      # - name: Publish Apps
-      #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      #   run: deno run -A ./scripts/publish.ts
-      #   env:
-      #     DECO_TOKEN: ${{ secrets.DECO_TOKEN }}
-      #     WORKSPACE: /shared/deco
+      - name: Publish Apps
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: deno run -A ./scripts/publish.ts
+        env:
+          DECO_TOKEN: ${{ secrets.DECO_TOKEN }}
+          WORKSPACE: /shared/deco
