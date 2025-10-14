@@ -2,7 +2,7 @@
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "@deco/durable": "jsr:@deco/durable@0.5.3",
-    "@deco/mcp": "jsr:@deco/mcp@0.7.4",
+    "@deco/mcp": "jsr:@deco/mcp@0.7.5",
     "@hono/hono": "jsr:@hono/hono@^4.5.4",
     "jose": "npm:jose@^6.1.0",
     "site/": "./",
