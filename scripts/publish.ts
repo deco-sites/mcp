@@ -337,5 +337,7 @@ async function main() {
   }
 }
 
-// Run the script
-await main();
+// Run the script if this file is executed directly
+if (import.meta.main) {
+  await main();
+}
