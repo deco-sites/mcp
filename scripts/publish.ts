@@ -18,75 +18,168 @@ interface PublishPayload {
     url: string;
   };
   unlisted: boolean;
-  metadata?: {
-    lastScriptValues?: {
-      friendlyName?: string;
-      description?: string;
-      icon?: string;
-      unlisted?: boolean;
-    };
-  };
 }
 
 interface RegistryApp {
   id: string;
+  workspace: string | null;
+  scopeId: string;
+  scopeName: string;
+  name: string;
+  appName: string;
   friendlyName?: string;
   description?: string;
   icon?: string;
   unlisted: boolean;
-  metadata?: {
-    lastScriptValues?: {
-      friendlyName?: string;
-      description?: string;
-      icon?: string;
-      unlisted?: boolean;
-    };
+  verified?: boolean;
+  createdAt: string;
+  updatedAt: string;
+  connection: {
+    url: string;
+    type: string;
   };
 }
 
+function buildApiUrl(toolName: string): string {
+  const workspace = Deno.env.get("WORKSPACE");
+  
+  if (!workspace) {
+    throw new Error("WORKSPACE environment variable is required");
+  }
+  
+  return `https://api.decocms.com${workspace}/mcp/tool/${toolName}`;
+}
+
+async function parseSSEResponse(
+  response: Response,
+): Promise<Record<string, unknown> | null> {
+  const text = await response.text();
+
+  // Check if it's SSE format (starts with "event:")
+  if (text.trim().startsWith("event:")) {
+    // Parse SSE format: extract data lines
+    const lines = text.split("\n");
+    let dataLine = "";
+
+    for (const line of lines) {
+      if (line.startsWith("data:")) {
+        const data = line.substring(5).trim();
+        if (data) {
+          dataLine = data;
+          break;
+        }
+      }
+    }
+
+    if (dataLine) {
+      try {
+        return JSON.parse(dataLine);
+      } catch (_e) {
+        // If parsing fails, try to find JSON in the text
+        const jsonMatch = text.match(/\{[\s\S]*\}/);
+        if (jsonMatch) {
+          return JSON.parse(jsonMatch[0]);
+        }
+        // Return empty result if we can't parse
+        return null;
+      }
+    }
+
+    // If no data line found, return null
+    return null;
+  }
+
+  // Try to parse as regular JSON
+  try {
+    return JSON.parse(text);
+  } catch (_e) {
+    // If it's not JSON, return null (might be empty response or error)
+    return null;
+  }
+}
+
 async function getExistingApp(
-  workspace: string,
   token: string,
   scopeName: string,
   appName: string,
 ): Promise<RegistryApp | null> {
   try {
-    const url = `https://api.deco.chat${workspace}/tools/call/REGISTRY_GET_APP`;
+    const url = buildApiUrl("INTEGRATIONS_CALL_TOOL");
+    const fullAppName = `@${scopeName}/${appName}`;
+
+    // Use REGISTRY_LIST_PUBLISHED_APPS and filter locally
+    // This is more reliable than REGISTRY_GET_APP for checking existence
+    const requestBody = {
+      method: "tools/call",
+      params: {
+        name: "INTEGRATIONS_CALL_TOOL",
+        arguments: {
+          id: "i:registry-management",
+          params: {
+            name: "REGISTRY_LIST_PUBLISHED_APPS",
+            arguments: {},
+          },
+        },
+      },
+      jsonrpc: "2.0",
+      id: 1,
+    };
+
     const response = await fetch(url, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream",
       },
-      body: JSON.stringify({
-        name: `@${scopeName}/${appName}`,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      if (response.status !== 404) {
+        console.error(
+          `⚠️  Error fetching apps: ${response.status} ${errorText}`,
+        );
+      }
       return null;
     }
 
-    const result = await response.json();
-    return result.data || null;
-  } catch (error) {
-    console.error(`Error fetching existing app: ${error}`);
+    const result = await parseSSEResponse(response);
+
+    if (!result) {
+      return null;
+    }
+
+    // Parse JSON-RPC response format
+    const resultAny = result as {
+      result?: { structuredContent?: { apps?: RegistryApp[] } };
+      structuredContent?: { apps?: RegistryApp[] };
+      content?: { structuredContent?: { apps?: RegistryApp[] } };
+    };
+
+    let apps: RegistryApp[] = [];
+    if (resultAny.result?.structuredContent?.apps) {
+      apps = resultAny.result.structuredContent.apps;
+    } else if (resultAny.structuredContent?.apps) {
+      apps = resultAny.structuredContent.apps;
+    } else if (resultAny.content?.structuredContent?.apps) {
+      apps = resultAny.content.structuredContent.apps;
+    }
+
+    // Find the app by exact appName match first, then by name
+    let foundApp = apps.find((app) => app.appName === fullAppName);
+    
+    if (!foundApp) {
+      // Fallback: try to find by name without scope
+      foundApp = apps.find((app) => app.name === appName);
+    }
+
+    return foundApp || null;
+  } catch (_error) {
+    // Silently fail - app might not exist yet
     return null;
   }
-}
-
-function wasEditedByAdmin(
-  currentValue: string | boolean | undefined,
-  scriptValue: string | boolean,
-  lastScriptValue?: string | boolean,
-): boolean {
-  // If no previous script value exists, compare directly
-  if (lastScriptValue === undefined) {
-    return currentValue !== scriptValue;
-  }
-
-  // If currentValue != lastScriptValue = admin edited
-  return currentValue !== lastScriptValue;
 }
 
 async function fetchApps(): Promise<App[]> {
@@ -110,28 +203,36 @@ async function fetchApps(): Promise<App[]> {
 
 async function publishApp(
   app: App,
-): Promise<{ success: boolean; error?: string }> {
+): Promise<{ success: boolean; error?: string; isNew?: boolean }> {
   if (!app.appName) {
     console.log(`Skipping app: ${app.name} (no appName)`);
-    return { success: true };
+    return { success: true, isNew: false };
   }
 
-  const workspace = Deno.env.get("WORKSPACE");
+  // Validate appName to avoid invalid values that cause UUID errors
+  if (app.appName === "mcp" || app.appName.length < 2) {
+    console.log(
+      `⚠️  Skipping app: ${app.name} (invalid appName: ${app.appName})`,
+    );
+    return { success: true, isNew: false };
+  }
+
   const token = Deno.env.get("DECO_TOKEN");
-
-  if (!workspace) {
-    throw new Error("WORKSPACE environment variable is required");
-  }
 
   if (!token) {
     throw new Error("DECO_TOKEN environment variable is required");
+  }
+
+  const workspace = Deno.env.get("WORKSPACE");
+
+  if (!workspace) {
+    throw new Error("WORKSPACE environment variable is required");
   }
 
   const scopeName = app.scope ?? "deco";
 
   // 1. Fetch existing app from registry
   const existingApp = await getExistingApp(
-    workspace,
     token,
     scopeName,
     app.appName,
@@ -145,69 +246,23 @@ async function publishApp(
     unlisted: false,
   };
 
-  // 3. If app exists, detect manually edited fields
-  let finalValues = scriptValues; // Default: use script values
+  // 3. Strategy: If app exists, preserve ALL editable fields (may have been edited by admin)
+  let finalValues = scriptValues; // Default: use script values for new apps
+  const isNewApp = !existingApp;
 
   if (existingApp) {
-    const lastScriptValues = existingApp.metadata?.lastScriptValues;
-
-    console.log(`\n🔍 Checking ${app.name} for admin edits...`);
-
-    // Check each field individually
+    // App exists - preserve all editable fields to respect potential admin edits
+    // Only update connection URL
     finalValues = {
-      friendlyName: wasEditedByAdmin(
-          existingApp.friendlyName,
-          scriptValues.friendlyName,
-          lastScriptValues?.friendlyName,
-        )
-        ? existingApp.friendlyName || scriptValues.friendlyName
-        : scriptValues.friendlyName,
-
-      description: wasEditedByAdmin(
-          existingApp.description,
-          scriptValues.description,
-          lastScriptValues?.description,
-        )
-        ? existingApp.description || scriptValues.description
-        : scriptValues.description,
-
-      icon: wasEditedByAdmin(
-          existingApp.icon,
-          scriptValues.icon,
-          lastScriptValues?.icon,
-        )
-        ? existingApp.icon || scriptValues.icon
-        : scriptValues.icon,
-
-      unlisted: wasEditedByAdmin(
-          existingApp.unlisted,
-          scriptValues.unlisted,
-          lastScriptValues?.unlisted,
-        )
-        ? existingApp.unlisted
-        : scriptValues.unlisted,
+      friendlyName: existingApp.friendlyName || scriptValues.friendlyName,
+      description: existingApp.description || scriptValues.description,
+      icon: existingApp.icon || scriptValues.icon,
+      unlisted: existingApp.unlisted,
     };
-
-    // Log decisions
-    const preserved = [];
-    if (finalValues.friendlyName !== scriptValues.friendlyName) {
-      preserved.push("friendlyName");
-    }
-    if (finalValues.description !== scriptValues.description) {
-      preserved.push("description");
-    }
-    if (finalValues.icon !== scriptValues.icon) preserved.push("icon");
-    if (finalValues.unlisted !== scriptValues.unlisted) {
-      preserved.push("unlisted");
-    }
-
-    if (preserved.length > 0) {
-      console.log(`  ⚠️  Preserving admin edits: ${preserved.join(", ")}`);
-    } else {
-      console.log(`  ✅ No admin edits detected, updating all fields`);
-    }
+    
+    console.log(`\n✏️  Updating existing app: ${app.name}`);
   } else {
-    console.log(`\n🆕 Creating new app: ${app.name}`);
+    console.log(`\n🆕 New app: ${app.name}`);
   }
 
   // 4. Prepare payload with final values
@@ -219,29 +274,51 @@ async function publishApp(
       type: "HTTP",
       url: `https://mcp.deco.site/apps/${app.name}/mcp/messages`,
     },
-    // Save script values for next comparison
-    metadata: {
-      lastScriptValues: scriptValues,
-    },
   };
 
-  const url =
-    `https://api.deco.chat${workspace}/tools/call/REGISTRY_PUBLISH_APP`;
+  const url = buildApiUrl("INTEGRATIONS_CALL_TOOL");
 
   try {
-    console.log(`📤 Publishing: ${app.name} (@${scopeName}/${app.appName})`);
+    // Use JSON-RPC format for REGISTRY_PUBLISH_APP
+    const requestBody = {
+      method: "tools/call",
+      params: {
+        name: "INTEGRATIONS_CALL_TOOL",
+        arguments: {
+          id: "i:registry-management",
+          params: {
+            name: "REGISTRY_PUBLISH_APP",
+            arguments: payload,
+          },
+        },
+      },
+      jsonrpc: "2.0",
+      id: 1,
+    };
 
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
+
+      // Check if it's the UUID error from Deco API
+      if (errorText.includes("string_to_uuid") || errorText.includes('"mcp"')) {
+        console.error(
+          `⚠️  Deco API error: Trying to use "mcp" as UUID. This is a backend issue.`,
+        );
+        console.error(
+          `💡 Tip: Check if WORKSPACE format is correct. Expected format: /shared/deco`,
+        );
+      }
+
       return {
         success: false,
         error: `${response.status} ${response.statusText}: ${errorText}`,
@@ -249,11 +326,13 @@ async function publishApp(
     }
 
     console.log(`✅ Successfully published: ${app.name}\n`);
-    return { success: true };
+    
+    return { success: true, isNew: isNewApp };
   } catch (error) {
     return {
       success: false,
       error: error instanceof Error ? error.message : String(error),
+      isNew: false,
     };
   }
 }
@@ -265,6 +344,7 @@ async function publishInBatches(
   const totalBatches = Math.ceil(apps.length / batchSize);
   let successCount = 0;
   let errorCount = 0;
+  let newAppsCount = 0;
 
   console.log(
     `Publishing ${apps.length} apps in ${totalBatches} batches of ${batchSize}...`,
@@ -289,6 +369,9 @@ async function publishInBatches(
 
       if (result.success) {
         successCount++;
+        if (result.isNew) {
+          newAppsCount++;
+        }
       } else {
         errorCount++;
         console.error(`❌ Failed to publish ${app.name}: ${result.error}`);
@@ -310,6 +393,8 @@ async function publishInBatches(
 
   console.log(`\n📊 Final Results:`);
   console.log(`✅ Successfully published: ${successCount} apps`);
+  console.log(`🆕 New apps: ${newAppsCount} apps`);
+  console.log(`♻️  Updated apps: ${successCount - newAppsCount} apps`);
   console.log(`❌ Failed to publish: ${errorCount} apps`);
   console.log(
     `📈 Success rate: ${((successCount / apps.length) * 100).toFixed(1)}%`,
@@ -337,7 +422,5 @@ async function main() {
   }
 }
 
-// Run the script if this file is executed directly
-if (import.meta.main) {
-  await main();
-}
+// Run the script
+await main();
