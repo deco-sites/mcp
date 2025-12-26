@@ -1,3 +1,54 @@
+/**
+ * Lista de apps que devem ser excluídos da atualização automática.
+ */
+const blacklistedApps: string[] = [
+  "flux",
+  "clearsale",
+  "pncp",
+  "perplexity",
+  "mcp-perplexity",
+  "meta-ads",
+  "http",
+  "tools",
+  "views",
+  "documents",
+  "workflows",
+  "time",
+  "secrets",
+  "teams",
+  "ai-models",
+  "knowledge-base",
+  "hosting",
+  "oauth-management",
+  "threads",
+  "file-system",
+  "deconfig",
+  "prompts",
+  "wallet",
+  "ai-gateway",
+  "agent-crud",
+  "registry",
+  "agents",
+  "api-keys",
+  "integrations",
+  "triggers",
+  "channels",
+  "event-bus",
+  "event-subscriber",
+  "vtex",
+  "dataforseo",
+  "connection",
+  "postgres",
+  "vibecoding-toolkit",
+  "discord-bot",
+  "github-projects",
+  "billing",
+];
+
+function isBlacklisted(appName: string): boolean {
+  return blacklistedApps.includes(appName.toLowerCase());
+}
+
 interface App {
   name: string;
   appName?: string;
@@ -42,11 +93,11 @@ interface RegistryApp {
 
 function buildApiUrl(toolName: string): string {
   const workspace = Deno.env.get("WORKSPACE");
-  
+
   if (!workspace) {
     throw new Error("WORKSPACE environment variable is required");
   }
-  
+
   return `https://api.decocms.com${workspace}/mcp/tool/${toolName}`;
 }
 
@@ -169,7 +220,7 @@ async function getExistingApp(
 
     // Find the app by exact appName match first, then by name
     let foundApp = apps.find((app) => app.appName === fullAppName);
-    
+
     if (!foundApp) {
       // Fallback: try to find by name without scope
       foundApp = apps.find((app) => app.name === appName);
@@ -203,10 +254,12 @@ async function fetchApps(): Promise<App[]> {
 
 async function publishApp(
   app: App,
-): Promise<{ success: boolean; error?: string; isNew?: boolean }> {
+): Promise<
+  { success: boolean; error?: string; isNew?: boolean; skipped?: boolean }
+> {
   if (!app.appName) {
     console.log(`Skipping app: ${app.name} (no appName)`);
-    return { success: true, isNew: false };
+    return { success: true, isNew: false, skipped: true };
   }
 
   // Validate appName to avoid invalid values that cause UUID errors
@@ -214,7 +267,13 @@ async function publishApp(
     console.log(
       `⚠️  Skipping app: ${app.name} (invalid appName: ${app.appName})`,
     );
-    return { success: true, isNew: false };
+    return { success: true, isNew: false, skipped: true };
+  }
+
+  // Check if app is blacklisted
+  if (isBlacklisted(app.name)) {
+    console.log(`⛔ Skipping blacklisted app: ${app.name}`);
+    return { success: true, isNew: false, skipped: true };
   }
 
   const token = Deno.env.get("DECO_TOKEN");
@@ -259,7 +318,7 @@ async function publishApp(
       icon: existingApp.icon || scriptValues.icon,
       unlisted: existingApp.unlisted,
     };
-    
+
     console.log(`\n✏️  Updating existing app: ${app.name}`);
   } else {
     console.log(`\n🆕 New app: ${app.name}`);
@@ -326,7 +385,7 @@ async function publishApp(
     }
 
     console.log(`✅ Successfully published: ${app.name}\n`);
-    
+
     return { success: true, isNew: isNewApp };
   } catch (error) {
     return {
@@ -345,6 +404,7 @@ async function publishInBatches(
   let successCount = 0;
   let errorCount = 0;
   let newAppsCount = 0;
+  let skippedCount = 0;
 
   console.log(
     `Publishing ${apps.length} apps in ${totalBatches} batches of ${batchSize}...`,
@@ -368,9 +428,13 @@ async function publishInBatches(
       const app = batch[j];
 
       if (result.success) {
-        successCount++;
-        if (result.isNew) {
-          newAppsCount++;
+        if (result.skipped) {
+          skippedCount++;
+        } else {
+          successCount++;
+          if (result.isNew) {
+            newAppsCount++;
+          }
         }
       } else {
         errorCount++;
@@ -380,8 +444,10 @@ async function publishInBatches(
 
     console.log(
       `Batch ${batchNumber} completed. Success: ${
-        results.filter((r) => r.success).length
-      }, Errors: ${results.filter((r) => !r.success).length}`,
+        results.filter((r) => r.success && !r.skipped).length
+      }, Skipped: ${results.filter((r) => r.skipped).length}, Errors: ${
+        results.filter((r) => !r.success).length
+      }`,
     );
 
     // Small delay between batches to avoid overwhelming the API
@@ -395,9 +461,12 @@ async function publishInBatches(
   console.log(`✅ Successfully published: ${successCount} apps`);
   console.log(`🆕 New apps: ${newAppsCount} apps`);
   console.log(`♻️  Updated apps: ${successCount - newAppsCount} apps`);
+  console.log(`⛔ Skipped (blacklist/invalid): ${skippedCount} apps`);
   console.log(`❌ Failed to publish: ${errorCount} apps`);
   console.log(
-    `📈 Success rate: ${((successCount / apps.length) * 100).toFixed(1)}%`,
+    `📈 Success rate: ${
+      ((successCount / (apps.length - skippedCount)) * 100).toFixed(1)
+    }%`,
   );
 }
 
