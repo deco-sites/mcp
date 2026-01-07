@@ -89,14 +89,7 @@ const extractProviderFromAppName = (appName: string): string | null => {
   const normalizedName = appName?.toLowerCase();
   const knownProviders = Object.keys(WELL_KNOWN_OAUTH_APPS);
 
-  console.log("[extractProviderFromAppName] Extraindo provider:", {
-    appName,
-    normalizedName,
-    knownProviders,
-  });
-
   if (knownProviders.includes(normalizedName)) {
-    console.log("[extractProviderFromAppName] Provider encontrado (match direto):", normalizedName);
     return normalizedName;
   }
 
@@ -107,21 +100,12 @@ const extractProviderFromAppName = (appName: string): string | null => {
         afterProvider?.startsWith("_");
       const hasUppercase = /^[A-Z]/.test(appName?.substring(provider.length));
 
-      console.log("[extractProviderFromAppName] Verificando provider:", {
-        provider,
-        afterProvider,
-        hasSeparator,
-        hasUppercase,
-      });
-
       if (afterProvider === "" || hasSeparator || hasUppercase) {
-        console.log("[extractProviderFromAppName] Provider encontrado:", provider);
         return provider;
       }
     }
   }
 
-  console.log("[extractProviderFromAppName] Nenhum provider encontrado");
   return null;
 };
 
@@ -229,46 +213,17 @@ export const withOAuth = (
       new Response(null, { status: 204 });
   });
   app.get("/oauth/callback", async (c) => {
-    console.log("[OAuth Callback] Iniciando callback");
-    
-    const urlObj = new URL(c.req.url);
-    const queryParamsKeys = Array.from(urlObj.searchParams.keys());
-    console.log("[OAuth Callback] Query params recebidos:", queryParamsKeys);
-    
-    // Log adicional para params específicos (sem valores sensíveis)
-    const scopeParam = c.req.query("scope");
-    const authUser = c.req.query("authuser");
-    const errorParam = c.req.query("error");
-    
-    console.log("[OAuth Callback] Params adicionais:", {
-      hasScope: !!scopeParam,
-      scopeLength: scopeParam?.length,
-      authUser,
-      error: errorParam,
-    });
-
     try {
       const state = c.req.query("state");
 
       if (!state) {
-        console.error("[OAuth Callback] State não fornecido");
         return c.json({ error: "State is required" }, 400);
       }
-
-      console.log("[OAuth Callback] Fazendo parse do state");
 
       let parsedState;
       try {
         parsedState = StateBuilder.parse(state);
-        console.log("[OAuth Callback] State parseado:", {
-          appName: parsedState.appName,
-          installId: parsedState.installId,
-          invokeApp: parsedState.invokeApp,
-          hasReturnUrl: !!parsedState.returnUrl,
-          integrationId: parsedState.integrationId,
-        });
-      } catch (parseError) {
-        console.error("[OAuth Callback] Erro ao parsear state:", parseError);
+      } catch (_parseError) {
         return c.json({ error: "Invalid state format" }, 400);
       }
 
@@ -282,17 +237,11 @@ export const withOAuth = (
       } = parsedState;
 
       const envVars = env(c);
-      
-      console.log("[OAuth Callback] Variáveis de ambiente disponíveis:", Object.keys(envVars).filter(k => k.includes("OAUTH") || k.includes("CLIENT")));
-      
       const oauthApp = getOAuthConfigForApp(appName);
 
       if (!oauthApp) {
-        console.error("[OAuth Callback] App OAuth não encontrado:", appName);
         return c.json({ error: `App ${appName} not found` }, 404);
       }
-
-      console.log("[OAuth Callback] App OAuth encontrado:", appName);
 
       interface OAuthCallbackProps {
         installId: string;
@@ -308,27 +257,8 @@ export const withOAuth = (
       }
 
       const code = c.req.query("code");
-      const hasCode = !!code;
-      console.log("[OAuth Callback] Code presente:", hasCode);
-
       const clientId = envVars[oauthApp.clientIdKey] as string;
       const clientSecret = envVars[oauthApp.clientSecretKey] as string;
-      
-      console.log("[OAuth Callback] Configuração OAuth:", {
-        provider: appName,
-        clientIdKey: oauthApp.clientIdKey,
-        clientSecretKey: oauthApp.clientSecretKey,
-      });
-      
-      console.log("[OAuth Callback] Credenciais:", {
-        hasClientId: !!clientId,
-        clientIdLength: clientId?.length,
-        clientIdPrefix: clientId ? clientId.substring(0, 20) : undefined,
-        clientIdSuffix: clientId ? clientId.substring(clientId.length - 10) : undefined,
-        hasClientSecret: !!clientSecret,
-        clientSecretLength: clientSecret?.length,
-        clientSecretPrefix: clientSecret ? clientSecret.substring(0, 12) : undefined,
-      });
 
       const oauthCallbackAction = `${invokeApp}${OAUTH_CALLBACK_ACTION}`;
       const props: OAuthCallbackProps = {
@@ -348,81 +278,11 @@ export const withOAuth = (
         },
       };
 
-      console.log("[OAuth Callback] Preparando invocação:");
-      console.log("[OAuth Callback] - Action:", oauthCallbackAction);
-      console.log("[OAuth Callback] - Props:", {
-        installId,
-        appName,
-        hasCode: !!code,
-        codeLength: code?.length,
-        redirectUri,
-        hasReturnUrl: !!returnUrl,
-        integrationId,
-        queryParams: props.queryParams,
-      });
-
-      let response;
-      try {
-        response = await invoke(oauthCallbackAction, props, c);
-        console.log("[OAuth Callback] Action executada:", {
-          status: response?.status,
-          statusText: response?.statusText,
-          hasResponse: !!response,
-          contentType: response?.headers.get("content-type"),
-        });
-      } catch (invokeError) {
-        console.error("[OAuth Callback] Erro ao invocar action:", {
-          error: invokeError instanceof Error ? invokeError.message : String(invokeError),
-          stack: invokeError instanceof Error ? invokeError.stack : undefined,
-        });
-        throw invokeError;
-      }
-
-      // Verifica se a response indica erro
-      if (response && !response.ok) {
-        console.error("[OAuth Callback] Response com erro:", {
-          status: response.status,
-          statusText: response.statusText,
-        });
-        
-        try {
-          const responseClone = response.clone();
-          const errorText = await responseClone.text();
-          console.error("[OAuth Callback] Corpo do erro (completo):", errorText);
-          
-          // Tenta parsear como JSON para mais detalhes
-          try {
-            const errorJson = JSON.parse(errorText);
-            console.error("[OAuth Callback] Erro parseado:", errorJson);
-          } catch (_parseErr) {
-            console.error("[OAuth Callback] Erro não é JSON válido");
-          }
-        } catch (_e) {
-          console.error("[OAuth Callback] Não foi possível ler corpo do erro");
-        }
-      }
-
+      const response = await invoke(oauthCallbackAction, props, c);
       const isHtml = response?.headers.get("content-type")?.includes("text/html");
 
       if (response && returnUrl && !isHtml) {
-        console.log("[OAuth Callback] Preparando redirect");
-        
-        let jsonData;
-        try {
-          jsonData = await response.json();
-          console.log("[OAuth Callback] Dados da resposta:", {
-            hasInstallId: !!jsonData?.installId,
-            hasName: !!jsonData?.name,
-            hasAccount: !!jsonData?.account,
-          });
-        } catch (jsonError) {
-          console.error("[OAuth Callback] Erro ao parsear JSON da resposta:", {
-            error: jsonError instanceof Error ? jsonError.message : String(jsonError),
-          });
-          throw jsonError;
-        }
-
-        const { installId: respInstallId, name, account } = jsonData;
+        const { installId: respInstallId, name, account } = await response.json();
         const thisUrl = new URL(c.req.url);
         thisUrl.protocol = "https:";
         if (thisUrl.hostname === "localhost") {
@@ -441,33 +301,17 @@ export const withOAuth = (
         name && url.searchParams.set("name", name);
         account && url.searchParams.set("account", account);
 
-        console.log("[OAuth Callback] Redirecionando para returnUrl");
         return c.redirect(url.toString());
       }
 
       if (!response) {
-        console.log("[OAuth Callback] Sem response - retornando página de sucesso");
         return c.html(
           "<html><body>Success! You may close this window.</body></html>",
         );
       }
 
-      console.log("[OAuth Callback] Retornando response original");
       return response;
     } catch (error) {
-      console.error("[OAuth Callback] ERRO GERAL:", {
-        tipo: error?.constructor?.name,
-        mensagem: error instanceof Error ? error.message : String(error),
-        stack: error instanceof Error ? error.stack : undefined,
-      });
-      
-      // Log resumido para facilitar debug
-      console.error("[OAuth Callback] RESUMO DO ERRO:", {
-        appName: c.req.query("state") ? "presente" : "ausente",
-        code: c.req.query("code") ? "presente" : "ausente",
-        erro: error instanceof Error ? error.message : String(error),
-      });
-      
       return c.json({
         error: "OAuth callback failed",
         message: error instanceof Error ? error.message : "Unknown error",
