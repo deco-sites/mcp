@@ -52,7 +52,7 @@ export const appStorage: (appName: string) => Storage = (appName) => ({
  * @title Site
  * @description Start your site from a template or from scratch.
  * @category Tool
- * @logo https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/1/0ac02239-61e6-4289-8a36-e78c0975bcc8
+ * @logo https://decoims.com/mcp/b17280d9-5972-4468-8d0c-76d9842e4ffe/0ac02239_0ac02239-61e6-4289-8a36-e78c0975bcc8.png
  */
 export default function Site(props: WebsiteProps): App<Manifest, State> {
   return {

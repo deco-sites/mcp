@@ -1,157 +1,157 @@
 [
   {
     "id": "googlesheets",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/google-sheets.svg",
+    "icon": "https://decoims.com/mcp/6ed09617-193d-46c4-8e3f-5afeeb60ae6d/6b5c3215_6b5c3215a911c9f4f92249e4c847f61a.svg",
     "name": "Googlesheets",
     "description": "Google Sheets is a web-based spreadsheet program that is part of the Google Drive office suite."
   },
   {
     "id": "notion",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/notion.svg",
+    "icon": "https://decoims.com/mcp/c5ba61c3-ff10-48ff-9fba-cfd4ce400dd8/4ecd53ba_4ecd53ba2f58bc58d613bfecfe8d5143.svg",
     "name": "Notion",
     "description": "Notion centralizes notes, docs, wikis, and tasks in a unified workspace, letting teams build custom workflows for collaboration and knowledge management"
   },
   {
     "id": "github",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/github.png",
+    "icon": "https://decoims.com/mcp/1d571791-2e11-4065-ae15-8b9dd4bdada0/d24dd861_d24dd86130f35904f3f6a8cc6b90e3d7.png",
     "name": "Github",
     "description": "GitHub is a code hosting platform for version control and collaboration, offering Git-based repository management, issue tracking, and continuous integration features"
   },
   {
     "id": "slack",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/slack.svg",
+    "icon": "https://decoims.com/mcp/e9ae64bf-66dd-449c-907b-690bef7612b1/f087bdf7_f087bdf795b85b67825e317b64f5c26e.svg",
     "name": "Slack",
     "description": "Slack is a channel-based messaging platform. With Slack, people can work together more effectively, connect all their software tools and services, and find the information they need to do their best work — all within a secure, enterprise-grade environment."
   },
   {
     "id": "gmail",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/gmail.svg",
+    "icon": "https://decoims.com/mcp/a983a14a-fac1-48e6-b685-1192777730ac/29560371_2956037139ff3dcdcef92668441e7c22.svg",
     "name": "Gmail",
     "description": "Connect to Gmail to send and manage emails."
   },
   {
     "id": "discord",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/discord.svg",
+    "icon": "https://decoims.com/mcp/5b50b117-6d64-44b5-8739-0eeccb1c18d3/56f6f8da_56f6f8dad57904e07561ea2fa6355b4f.svg",
     "name": "Discord",
     "description": "An instant messaging and VoIP social platform."
   },
   {
     "id": "googledrive",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/google-drive.svg",
+    "icon": "https://decoims.com/mcp/0d89b9e4-2332-4f30-aa50-242316b5d324/de818b2f_de818b2f7059d6494d2249c36a53fe20.svg",
     "name": "Googledrive",
     "description": "Connect to Google Drive!"
   },
   {
     "id": "onepage",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/onepage.svg",
+    "icon": "https://decoims.com/mcp/c7f842f8-d631-4eb3-a861-6522a4fd35a9/8eb2c723_8eb2c723d3bb015c3e763da7c17a6108.svg",
     "name": "Onepage",
     "description": "API for enriching user and company data, providing endpoints for token validation and generic search."
   },
   {
     "id": "rocketlane",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/rocketlane.png",
+    "icon": "https://decoims.com/mcp/a34e8a12-b7ea-4cb8-8b1b-d3eb5a26b81d/3b3edd1c_3b3edd1cec993288a7d27a7d1511b905.png",
     "name": "Rocketlane",
     "description": "Rocketlane specializes in customer onboarding and project delivery, providing shared workspaces, milestones, and status tracking to streamline implementations"
   },
   {
     "id": "coda",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/coda.png",
+    "icon": "https://decoims.com/mcp/989734e5-104f-4c1b-9304-710e53395903/cfc334f6_cfc334f633f73d869ff3f0cb52f9c3e8.png",
     "name": "Coda",
     "description": "Collaborative workspace platform that transforms documents into powerful tools for team productivity and project management"
   },
   {
     "id": "clickup",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/clickup.png",
+    "icon": "https://decoims.com/mcp/5b56a6c2-2292-44f0-910b-6c9fbb07c4e5/3607f8de_3607f8de13179a43f3b4d6f8451228a9.png",
     "name": "Clickup",
     "description": "ClickUp unifies tasks, docs, goals, and chat in a single platform, allowing teams to plan, organize, and collaborate across projects with customizable workflows"
   },
   {
     "id": "googledocs",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/google-docs.svg",
+    "icon": "https://decoims.com/mcp/992bb760-4af5-4d47-93bf-32ed99e6a314/ed4f0b8e_ed4f0b8edd3a2608bb821f623af1fb2a.svg",
     "name": "Googledocs",
     "description": "Connect to Google Docs to perform various document-related actions."
   },
   {
     "id": "airtable",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/airtable.svg",
+    "icon": "https://decoims.com/mcp/a07fce00-d6e3-440b-ac52-ea350e6ddfb3/ce1951d7_ce1951d7f1cde76eea8ff668f366942d.svg",
     "name": "Airtable",
     "description": "Airtable is a low‒code platform to build next‒gen apps. Move beyond rigid tools, operationalize your critical data, and reimagine workflows with AI"
   },
   {
     "id": "linear",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/linear.png",
+    "icon": "https://decoims.com/mcp/03173659-998d-404e-af59-2f5415a5b396/596d59b8_596d59b82a78b2b4b61362d988cf6394.png",
     "name": "Linear",
     "description": "Connect to Linear to create and manage issues, list projects, teams, and more"
   },
   {
     "id": "shortcut",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//shortcut.svg",
+    "icon": "https://decoims.com/mcp/1102af7c-c854-4345-acff-4ff81dba3bcc/ee031e5f_ee031e5f7675ed8de8591ebc29d4601a.svg",
     "name": "Shortcut",
     "description": "Shortcut aligns product development work with company objectives so teams can execute with a shared purpose."
   },
   {
     "id": "googletasks",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//google-tasks.png",
+    "icon": "https://decoims.com/mcp/e829e684-0394-4366-a3be-b168796af829/02339573_02339573ef12db714016e394afe5a6dc.png",
     "name": "Googletasks",
     "description": "Google Tasks provides a simple to-do list and task management system integrated into Gmail and Google Calendar for quick and easy tracking"
   },
   {
     "id": "wrike",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/wrike.png",
+    "icon": "https://decoims.com/mcp/5d2ec954-7577-496e-bf95-161d7709ab9c/38a256c8_38a256c8415c7f8a09641cb9088d8431.png",
     "name": "Wrike",
     "description": "Wrike is a project management and collaboration tool offering customizable workflows, Gantt charts, reporting, and resource management to boost team productivity"
   },
   {
     "id": "monday",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//monday.png",
+    "icon": "https://decoims.com/mcp/2ecec86a-76b3-4891-9782-7146fe8c26a0/b2de9b7a_b2de9b7af81a65999e626b867c10ecef.png",
     "name": "Monday",
     "description": "Monday is a cloud-based work operating system where teams create workflow apps in minutes to run their processes, projects, and everyday work."
   },
   {
     "id": "tavily",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/tavily.svg",
+    "icon": "https://decoims.com/mcp/9a3df2fc-4049-49e5-b233-ec5b4b16410c/e885c9a1_e885c9a1a97628b27362dfe996338ac0.svg",
     "name": "Tavily",
     "description": "Tavily provides advanced search capabilities with various options including image inclusion, raw content, and domain filtering."
   },
   {
     "id": "peopledatalabs",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/pdl.png",
+    "icon": "https://decoims.com/mcp/35d0f3e4-2c1a-4d6c-a2f8-550c708f18bb/55684f6f_55684f6f1d837734f12aa0df93223b00.png",
     "name": "Peopledatalabs",
     "description": "PeopleDataLabs provides B2B data enrichment and identity resolution, empowering organizations to build enriched user profiles and validate customer information"
   },
   {
     "id": "mixpanel",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/mixpanel.svg",
+    "icon": "https://decoims.com/mcp/c91b6c77-0026-4007-be7b-b1ae16747950/4a6b52a3_4a6b52a34af5d66aadb57171302b5843.svg",
     "name": "Mixpanel",
     "description": "Mixpanel is an analytics platform that helps companies measure user engagement and retention."
   },
   {
     "id": "googlebigquery",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/googl-bigquery.svg",
+    "icon": "https://decoims.com/mcp/5c7723b5-dcd1-4ed5-a53a-87b3d5901ae2/79c74311_79c74311534316ec39a46111e6f727b8.svg",
     "name": "Googlebigquery",
     "description": "Connect to BigQuery to query BigData."
   },
   {
     "id": "microsoft_clarity",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//microsoft-clarity-logo.jpeg",
+    "icon": "https://decoims.com/mcp/a6c04eb9-f3f4-4995-8653-16ff2beb6ca7/74612d3c_74612d3cd5f8aea326e3559b82181025.jpg",
     "name": "Microsoft clarity",
     "description": "Microsoft Clarity is a free, easy-to-use tool that captures how real people actually use your site."
   },
   {
     "id": "posthog",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/posthog.svg",
+    "icon": "https://decoims.com/mcp/f5a81c4e-2376-4601-b6c1-f902ef8640f6/78d35c5d_78d35c5d5bf7585f698ffa268907aba8.svg",
     "name": "Posthog",
     "description": "PostHog is an open-source product analytics platform tracking user interactions and behaviors to help teams refine features, improve funnels, and reduce churn"
   },
   {
     "id": "servicenow",
-    "icon": "https://raw.githubusercontent.com/ComposioHQ/open-logos/refs/heads/master/servicenow.png",
+    "icon": "https://decoims.com/mcp/2ce9a52d-9a41-4773-852c-477f7e821901/02d42809_02d42809aa56f55eeddf6a359fb36ab3.png",
     "name": "Servicenow",
     "description": "Servicenow provides IT Service Management Transform service management to boost productivity and maximize ROI"
   },
   {
     "id": "fireflies",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/fireflies.jpg",
+    "icon": "https://decoims.com/mcp/d2d5a332-0d24-45c0-ac3a-c7f9b360e5f1/6172294b_6172294b023097994de78789a00477cb.jpg",
     "name": "Fireflies",
     "description": "Fireflies.ai helps your team transcribe, summarize, search, and analyze voice conversations."
   },
@@ -163,25 +163,25 @@
   },
   {
     "id": "firecrawl",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/firecrawl.jpeg",
+    "icon": "https://decoims.com/mcp/f8bb6b9c-0bab-4e91-9919-fcf7d7e8cbd8/f35bfbdc_f35bfbdc7b804dd0934542ba80ab8589.jpg",
     "name": "Firecrawl",
     "description": "Firecrawl automates web crawling and data extraction, enabling organizations to gather content, index sites, and gain insights from online sources at scale"
   },
   {
     "id": "snowflake",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/snowflake.svg",
+    "icon": "https://decoims.com/mcp/9bd01abe-66f7-4eff-a8d0-08c87d6fb797/4d0805ef_4d0805ef616ff4db431bf9c8d48f7411.svg",
     "name": "Snowflake",
     "description": "Connect to Snowflake to run queries."
   },
   {
     "id": "serpapi",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//serpapi.png",
+    "icon": "https://decoims.com/mcp/615706fb-ea95-451a-a08a-e28d16a4b1b8/43e84beb_43e84beb6865e987b710ad582b9edaad.png",
     "name": "Serpapi",
     "description": "SerpApi provides a real-time API for structured search engine results, allowing developers to scrape, parse, and analyze SERP data for SEO and research"
   },
   {
     "id": "exa",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//exa.png",
+    "icon": "https://decoims.com/mcp/c3e78d18-0459-4515-ad4b-066b31706d32/6f691dfe_6f691dfeb7327b0e16d69e06657389f0.png",
     "name": "Exa",
     "description": "The Exa class extends the base Tool class to interact with the Exa Search service, offering actions like Search, Similarlink, and Answer. These actions enable querying, finding similar links, and generating answers from search results. Currently, no triggers are defined, but they can be added as needed to enhance functionality."
   },
@@ -193,13 +193,13 @@
   },
   {
     "id": "typefully",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/typefully.png",
+    "icon": "https://decoims.com/mcp/e9dd9892-acc3-42f2-b36e-7d8240014b14/0841fb23_0841fb23612b7f6d7a7607b8d4ffb3ec.png",
     "name": "Typefully",
     "description": "Integrate Typefully to streamline and manage your AI-powered content creation."
   },
   {
     "id": "lmnt",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/lmnt_logo.jpeg",
+    "icon": "https://decoims.com/mcp/a75c6dfb-e8e6-4524-9d23-3764923f1848/c193c642_c193c6422cb302914cd492e94bfdd0b0.jpg",
     "name": "Lmnt",
     "description": "LMNT is an API for text-to-speech and voice cloning"
   },
@@ -211,7 +211,7 @@
   },
   {
     "id": "entelligence",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/entelligence.png",
+    "icon": "https://decoims.com/mcp/02147570-9648-4c77-8fd4-c8fd47c84ffa/8db99de2_8db99de2dedb4c3e9fb62e752a428aae.png",
     "name": "Entelligence",
     "description": "Entelligence leverages artificial intelligence to provide insights, recommendations, and predictive analytics for businesses seeking data-driven decision-making capabilities"
   },
@@ -223,19 +223,19 @@
   },
   {
     "id": "mem0",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//mem0.png",
+    "icon": "https://decoims.com/mcp/2990c83e-5925-4e78-a542-b94fc8282d99/168265e7_168265e74fa3cfbd02d256512017abf2.png",
     "name": "Mem0",
     "description": "Mem0 assists with AI-driven note-taking, knowledge recall, and productivity tools, allowing users to organize, search, and generate content from stored information"
   },
   {
     "id": "semanticscholar",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/semanticscholar.png",
+    "icon": "https://decoims.com/mcp/ef2671ff-4a32-4038-a468-fea138ccfe50/49d857a1_49d857a14e5f4562f35dbcc81778824d.png",
     "name": "Semanticscholar",
     "description": "Semantic Scholar is an AI-powered academic search engine that helps researchers discover and understand scientific literature"
   },
   {
     "id": "perplexityai",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//perplexity.jpeg",
+    "icon": "https://decoims.com/mcp/66aa1ad1-c15c-4441-9375-67e1cebfa61f/20dcf540_20dcf540ec81bb2a60f4bcbdfdca0d25.jpg",
     "name": "Perplexityai",
     "description": "The Perplexity tool interfaces with Perplexity AI's search service, offering advanced natural language processing for sophisticated searches. The PerplexityAISearch action allows for: - Query execution with AI models tailored to various search tasks. - Search customization through parameters affecting content generation. - Domain filtering to enhance search precision. - Real-time response streaming for dynamic applications. This action is highly configurable for a tailored search experience, suitable for a wide range of AI-driven applications."
   },
@@ -247,67 +247,67 @@
   },
   {
     "id": "acculynx",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/acculynx.jpeg",
+    "icon": "https://decoims.com/mcp/3f60495d-56fd-4cda-a4c8-08eeb4901493/48e8507e_48e8507e65b1bb09969b59f0ddc0b0fd.jpg",
     "name": "Acculynx",
     "description": "Using the AccuLynx API, data can be seamlessly exchanged between AccuLynx and other applications for greater efficiency and productivity."
   },
   {
     "id": "zendesk",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/zendesk.svg",
+    "icon": "https://decoims.com/mcp/40c69e40-0e85-48f9-ae4d-672275201219/6c31361b_6c31361b1bc386ce7e0377e5768731fc.svg",
     "name": "Zendesk",
     "description": "Zendesk is a customer service and sales platform that helps businesses manage customer communication and support"
   },
   {
     "id": "hubspot",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//hubspot.webp",
+    "icon": "https://decoims.com/mcp/8ddd3905-2373-4448-857e-956c178e5826/384e44e5_384e44e52cf5e233f0aaa6607271373a.webp",
     "name": "Hubspot",
     "description": "HubSpot is an inbound marketing, sales, and customer service platform integrating CRM, email automation, and analytics to facilitate lead nurturing and seamless customer experiences"
   },
   {
     "id": "intercom",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/intercom.svg",
+    "icon": "https://decoims.com/mcp/9b0b75ba-b930-4f7a-a504-d313cbe7b39a/aa7a601b_aa7a601bca16ebaeca20081d8b9af95a.svg",
     "name": "Intercom",
     "description": "A messaging platform that allows businesses to communicate with prospective and existing customers within their app, on their website, through social media, or via email."
   },
   {
     "id": "zoominfo",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/agencyzoom_logo.jpeg",
+    "icon": "https://decoims.com/mcp/92ad97a5-2e0c-4bd3-85ad-820a5b590a43/545c6181_545c6181bedab6ed574caf782e1b646d.jpg",
     "name": "Zoominfo",
     "description": "ZoomInfo is a multiplatform operating system that revenue teams use to deliver business growth."
   },
   {
     "id": "dynamics365",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/Dynamics%20365%20Icon.svg",
+    "icon": "https://decoims.com/mcp/20f2f275-362d-4fee-9fd1-5e59e32c454d/33650819_336508194615a990eb62ee69b63f4d95.svg",
     "name": "Dynamics365",
     "description": "Dynamics 365 from Microsoft combines CRM, ERP, and productivity apps to streamline sales, marketing, customer service, and operations in one integrated platform"
   },
   {
     "id": "pipedrive",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/pipedrive.svg",
+    "icon": "https://decoims.com/mcp/da94ce30-acfb-4eff-98ab-b1b95c83befc/896b891f_896b891f433817a3036d1ab4cf500f30.svg",
     "name": "Pipedrive",
     "description": "Pipedrive is a sales management tool built around pipeline visualization, lead tracking, activity reminders, and automation to keep deals progressing"
   },
   {
     "id": "salesforce",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/salesforce.svg",
+    "icon": "https://decoims.com/mcp/9d3f6a26-4cb6-49f9-b8e5-21bf375adce4/dea8f8fa_dea8f8fae60bb5c8fc557cb1c216822c.svg",
     "name": "Salesforce",
     "description": "Salesforce is a leading CRM platform integrating sales, service, marketing, and analytics to build customer relationships and drive business growth"
   },
   {
     "id": "kommo",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/kommo.png",
+    "icon": "https://decoims.com/mcp/de564608-3a46-4f8d-8b6d-8a7f07b47887/90199e8c_90199e8c92885addda987f16f2ee85b6.png",
     "name": "Kommo",
     "description": "Kommo CRM (formerly amoCRM) integration tool for managing customer relationships, sales pipelines, and business processes. This tool enables automation of various CRM operations including:"
   },
   {
     "id": "apollo",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/apollo.jpg",
+    "icon": "https://decoims.com/mcp/4139e51f-5982-4ca2-87d6-aec74c905873/c755cde1_c755cde17b10d070fcfb97e277e2ad3f.jpg",
     "name": "Apollo",
     "description": "Apollo is a CRM tool that allows you to manage your contacts, leads, and opportunities."
   },
   {
     "id": "agencyzoom",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/agencyzoom_logo.jpeg",
+    "icon": "https://decoims.com/mcp/92ad97a5-2e0c-4bd3-85ad-820a5b590a43/545c6181_545c6181bedab6ed574caf782e1b646d.jpg",
     "name": "Agencyzoom",
     "description": "AgencyZoom is for the P&C insurance agent that's looking to increase sales, boost retention and analyze agency & producer performance."
   },
@@ -319,55 +319,55 @@
   },
   {
     "id": "freshdesk",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/freshdesk.svg",
+    "icon": "https://decoims.com/mcp/4cd8650e-2a1a-4a60-bf35-dbd69770e2cc/9d8a5471_9d8a5471d20e6d8be11af2fb5e641f7f.svg",
     "name": "Freshdesk",
     "description": "A customer support platform that provides helpdesk support with all smart automations to get things done faster."
   },
   {
     "id": "affinity",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/affinity.jpeg",
+    "icon": "https://decoims.com/mcp/b05d5688-663b-4493-8e25-f02892c417af/f848018f_f848018f241234b3735715a85497e178.jpg",
     "name": "Affinity",
     "description": "Affinity helps private capital investors to find, manage, and close more deals"
   },
   {
     "id": "retellai",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/retellai.jpeg",
+    "icon": "https://decoims.com/mcp/728a9b3b-5524-40c6-bafb-25eb64dd9abd/745c4dc9_745c4dc9ae7cf798775044610940982b.jpg",
     "name": "Retellai",
     "description": "RetellAI captures calls and transcripts, enabling businesses to analyze conversations, extract insights, and enhance customer interactions in one centralized platform"
   },
   {
     "id": "share_point",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/sharepoint-icon.svg",
+    "icon": "https://decoims.com/mcp/7419a45e-2e71-46dd-93a7-f40fe24670c0/f8824280_f8824280704418bf19f8b944ce262018.svg",
     "name": "Share point",
     "description": "SharePoint is a Microsoft platform for document management and intranets, enabling teams to collaborate, store, and organize content securely and effectively"
   },
   {
     "id": "microsoft_teams",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//microsoft-teams-logo.jpeg",
+    "icon": "https://decoims.com/mcp/db451000-a6b4-4de9-adb8-99034c86f714/09fc3169_09fc31695197228627f688aaf2f8d440.jpg",
     "name": "Microsoft teams",
     "description": "Connect to Microsoft Teams to manage channels."
   },
   {
     "id": "googlemeet",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/google-meet.webp",
+    "icon": "https://decoims.com/mcp/08f0c5ad-3de3-469f-b88f-b531c260521c/62127e03_62127e03ae0d992e2c4d682e5ebcfb79.webp",
     "name": "Googlemeet",
     "description": "Google Meet is a video conferencing tool developed by Google."
   },
   {
     "id": "zoom",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/zoom.svg",
+    "icon": "https://decoims.com/mcp/290998d8-819f-4abd-949b-dfa3c6080ab5/1757ad98_1757ad98c787a400e28f2717e6618845.svg",
     "name": "Zoom",
     "description": "Zoom is a video conferencing and online meeting platform featuring breakout rooms, screen sharing, and integrations with various enterprise tools"
   },
   {
     "id": "discordbot",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/discord.svg",
+    "icon": "https://decoims.com/mcp/5b50b117-6d64-44b5-8739-0eeccb1c18d3/56f6f8da_56f6f8dad57904e07561ea2fa6355b4f.svg",
     "name": "Discordbot",
     "description": "Discordbot refers to automated programs on Discord servers, performing tasks like moderation, music playback, and user engagement to enhance community interactions"
   },
   {
     "id": "slackbot",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/slack.svg",
+    "icon": "https://decoims.com/mcp/e9ae64bf-66dd-449c-907b-690bef7612b1/f087bdf7_f087bdf795b85b67825e317b64f5c26e.svg",
     "name": "Slackbot",
     "description": "Slackbot automates responses and reminders within Slack, assisting with tasks like onboarding, FAQs, and notifications to streamline team productivity"
   },
@@ -379,37 +379,37 @@
   },
   {
     "id": "outlook",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/Outlook%20SVG%20Icon.svg",
+    "icon": "https://decoims.com/mcp/0d646bcb-c106-45ae-87cb-198beb2be9ca/7b54cf29_7b54cf295d888ac2a83d1aba4cebf3fa.svg",
     "name": "Outlook",
     "description": "Outlook is Microsoft’s email and calendaring platform integrating contacts, tasks, and scheduling, enabling users to manage communications and events in a unified workspace"
   },
   {
     "id": "hackernews",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/hackernews.png",
+    "icon": "https://decoims.com/mcp/17ae541c-cd15-45c7-960e-ae8b9f733699/09a59e47_09a59e47b1687e5e9ac6f3f91f5c5a69.png",
     "name": "Hackernews",
     "description": "Hacker News is a tech-focused news aggregator by Y Combinator, featuring user-submitted stories and discussions on startups, programming, and emerging trends"
   },
   {
     "id": "google_maps",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/google_maps.jpeg",
+    "icon": "https://decoims.com/mcp/e9463df3-296f-46c6-86b1-49b7aaee203d/871db0f9_871db0f9a82fe5a11ebb2f8b8284f813.jpg",
     "name": "Google maps",
     "description": "Google Maps is a web mapping platform and consumer application offering satellite imagery, aerial photography, street maps, 360° interactive panoramic views of streets, real-time traffic conditions, and route planning for traveling by foot, car, bike, air and public transportation."
   },
   {
     "id": "browserbase_tool",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//browser-base.jpeg",
+    "icon": "https://decoims.com/mcp/567bfae9-7232-4d16-a733-44a7bd58c137/3fc53ef7_3fc53ef7d213133ba86f7587b3e3062a.jpg",
     "name": "Browserbase tool",
     "description": "A browsing app that gets a URL, reads its contents, and returns it."
   },
   {
     "id": "foursquare",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/foursquare.png",
+    "icon": "https://decoims.com/mcp/8b5da059-a6ca-4bbe-8d57-7a1cf632d253/e7020bc1_e7020bc131754231b1b4bdef32691477.png",
     "name": "Foursquare",
     "description": "Search for places and place recommendations from the Foursquare Places database"
   },
   {
     "id": "weathermap",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/weathermap.png",
+    "icon": "https://decoims.com/mcp/5edd1728-89d6-4a13-ae9b-44e822e82888/0f4e2d7b_0f4e2d7baac703c85a727b2d0d8f720c.png",
     "name": "Weathermap",
     "description": "WeatherMap provides visual weather data, forecasts, and mappings, helping users understand climate patterns or track severe weather conditions"
   },
@@ -421,73 +421,73 @@
   },
   {
     "id": "linkup",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/linkup.jpeg",
+    "icon": "https://decoims.com/mcp/2f187e4a-6ea1-4d73-87ee-70ac247d56c5/265baf40_265baf40e2d359fe48367d091b9bf586.jpg",
     "name": "Linkup",
     "description": "Search the Web for Relevant Results (RAG Use Case)"
   },
   {
     "id": "crustdata",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/crustdata.png",
+    "icon": "https://decoims.com/mcp/9418785a-5240-4f6d-81ca-01c8bcdfc2cd/c1af6997_c1af6997e6211b2e86145d7970951273.png",
     "name": "Crustdata",
     "description": "CrustData is an AI-powered data intelligence platform that provides real-time company and people data via APIs and webhooks, empowering B2B sales teams, AI SDRs, and investors to act on live signals"
   },
   {
     "id": "twitter_media",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/twitter.png",
+    "icon": "https://decoims.com/mcp/2ddf9433-266f-4276-b84b-96be32240aa6/cf3b4377_cf3b437768d8bdf142f86e8b666a5d73.png",
     "name": "Twitter media",
     "description": "Twitter Media focuses on multimedia tools and features within Twitter, allowing brands to leverage rich content for marketing campaigns"
   },
   {
     "id": "sendgrid",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/sendgrid.png",
+    "icon": "https://decoims.com/mcp/ee8cf061-ecd0-423d-b4e7-724438a4f37d/782697ca_782697cab7078cef07c0bb5e467ed351.png",
     "name": "Sendgrid",
     "description": "SendGrid is a cloud-based email delivery platform providing transactional and marketing email services, with APIs for integration, analytics, and scalability"
   },
   {
     "id": "reddit",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/reddit.svg",
+    "icon": "https://decoims.com/mcp/eb23b35b-5e12-4006-ba32-60567ce04301/d03429c0_d03429c0677423a316ab14c5acec4484.svg",
     "name": "Reddit",
     "description": "Connect to Reddit to post and comment."
   },
   {
     "id": "brevo",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//brevo-logo.jpg",
+    "icon": "https://decoims.com/mcp/1f210476-dccc-4766-bae6-c316f7b38666/280afa68_280afa68dbd1445ce09a057d70be173c.jpg",
     "name": "Brevo",
     "description": "Brevo (formerly Sendinblue) delivers email marketing, SMS campaigns, and marketing automation solutions, empowering businesses to nurture leads, engage audiences, and drive conversions"
   },
   {
     "id": "klaviyo",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//klaviyo.png",
+    "icon": "https://decoims.com/mcp/7c69eda9-1d07-4719-9a18-967fe896084d/8c57f81c_8c57f81cbe519a4bf29bf5c703a24de2.png",
     "name": "Klaviyo",
     "description": "Klaviyo is a data-driven email and SMS marketing platform that allows e-commerce brands to deliver targeted messages, track conversions, and scale customer relationships"
   },
   {
     "id": "mailchimp",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/mailchimp.svg",
+    "icon": "https://decoims.com/mcp/9ba42e4c-8b06-420c-a0f9-6a09cfb33794/008df23b_008df23b93e5962366b37935a27aa416.svg",
     "name": "Mailchimp",
     "description": "Mailchimp is an email marketing and automation platform providing campaign templates, audience segmentation, and performance analytics to drive engagement and conversions"
   },
   {
     "id": "ahrefs",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/ahrefs.png",
+    "icon": "https://decoims.com/mcp/bece86f8-bed6-436e-ad58-8a214cf36895/2df27af5_2df27af5ebfc5adb4eeea7d59e1cf9f4.png",
     "name": "Ahrefs",
     "description": "Ahrefs is an SEO and marketing platform offering site audits, keyword research, content analysis, and competitive insights to improve search rankings and drive organic traffic"
   },
   {
     "id": "linkedin",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/linkedin.svg",
+    "icon": "https://decoims.com/mcp/385a621c-8137-4734-a449-efaa57614eb6/807de874_807de8748c8e58311f81695c49e7826e.svg",
     "name": "Linkedin",
     "description": "Connect to Linked to send and manage emails."
   },
   {
     "id": "shopify",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/shopify.svg",
+    "icon": "https://decoims.com/mcp/989f1c27-541d-47df-b32a-a2d53f52116a/209af870_209af870da03a973b819741008331004.svg",
     "name": "Shopify",
     "description": "A leading global commerce platform that allows anyone to sell online and in person."
   },
   {
     "id": "junglescout",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/junglescout.jpeg",
+    "icon": "https://decoims.com/mcp/8778b2b4-c1ab-46ab-9cc3-eebb70334895/ad9d1a97_ad9d1a9778287de42fdde26efcc779f3.jpg",
     "name": "Junglescout",
     "description": "Jungle Scout assists Amazon sellers with product research, sales estimates, and competitive insights to optimize inventory, pricing, and listing strategies"
   },
@@ -499,37 +499,37 @@
   },
   {
     "id": "apaleo",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/apaleo.png",
+    "icon": "https://decoims.com/mcp/0c09a019-9af7-4cbe-a960-b8746800cd9e/195c6c62_195c6c6286e666e825107cbbbf2c6a2b.png",
     "name": "Apaleo",
     "description": "Apaleo is a cloud-based property management platform handling reservations, billing, and daily operations for hospitality businesses"
   },
   {
     "id": "calendly",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/calendly.svg",
+    "icon": "https://decoims.com/mcp/2b7865ef-029d-4e22-8dcd-ae95d633a1bb/fd8bd575_fd8bd575b0999f49ad7d092a097d694b.svg",
     "name": "Calendly",
     "description": "Calendly is an appointment scheduling tool that automates meeting invitations, availability checks, and reminders, helping individuals and teams avoid email back-and-forth"
   },
   {
     "id": "googlecalendar",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/google-calendar.svg",
+    "icon": "https://decoims.com/mcp/cf3e5765-681d-41da-a244-5071666235fe/f11827e8_f11827e8b8e8da097e43b6d980c6a3f2.svg",
     "name": "Googlecalendar",
     "description": "Google Calendar is a time-management and scheduling calendar service developed by Google."
   },
   {
     "id": "zenrows",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/zenrows.jpeg",
+    "icon": "https://decoims.com/mcp/86873ff3-3e48-47a0-8554-acd76874d55f/ccb988ab_ccb988ab53c63d3b239d9051a15a9786.jpg",
     "name": "Zenrows",
     "description": "Connect to ZenRows to effortlessly scrape and extract web data, process it, and manage it using the powerful ZenRows API."
   },
   {
     "id": "neon",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/neon.png",
+    "icon": "https://decoims.com/mcp/6d1f0f63-f5fa-449c-ba45-8d3836f8125b/8c385b4f_8c385b4f8a0757067855c6714dcb3eb9.png",
     "name": "Neon",
     "description": "Postgres, on a serverless platform designed to help you build reliable and scalable applications faster"
   },
   {
     "id": "pagerduty",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/pagerduty.png",
+    "icon": "https://decoims.com/mcp/62dafe3c-99dc-4417-9341-d7e54e303ffb/7b209d25_7b209d2525fc003c5aec106330e85e7e.png",
     "name": "Pagerduty",
     "description": "Integrate PagerDuty to manage incidents, schedules, and alerts directly from your application."
   },
@@ -541,49 +541,49 @@
   },
   {
     "id": "supabase",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/supabase.jpeg",
+    "icon": "https://decoims.com/mcp/2324dae7-d35b-46a2-9706-d8cce293375f/c99f440b_c99f440bc35d716dfe015ee223c14787.jpg",
     "name": "Supabase",
     "description": "Supabase is an open-source backend-as-a-service providing a Postgres database, authentication, storage, and real-time subscription APIs for building modern applications"
   },
   {
     "id": "bitbucket",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/bitbucket.svg",
+    "icon": "https://decoims.com/mcp/50919014-0cdd-44ad-86cc-4ae39e7e654c/0ebdd1a8_0ebdd1a8b2814ea6c799aced92730c1e.svg",
     "name": "Bitbucket",
     "description": "Bitbucket is a Git-based code hosting and collaboration platform supporting private and public repositories, enabling teams to manage and review code through pull requests and integrations"
   },
   {
     "id": "sentry",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/sentry.svg",
+    "icon": "https://decoims.com/mcp/bc9468db-b7ab-48f7-9af4-783ec238e39b/3fc0f18b_3fc0f18b2685525fd0d1c2aef4ff70b1.svg",
     "name": "Sentry",
     "description": "Integrate Sentry to manage your error tracking and monitoring."
   },
   {
     "id": "jira",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/jira.svg",
+    "icon": "https://decoims.com/mcp/dfd0bece-9f0a-4e3b-aceb-a81720f7753c/2908734d_2908734d5a4f65bb53b583bf6910937b.svg",
     "name": "Jira",
     "description": "A tool for bug tracking, issue tracking, and agile project management."
   },
   {
     "id": "bolna",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/bolna-logo.png",
+    "icon": "https://decoims.com/mcp/18db94e1-1fd4-4f35-8e67-f6315cde15e5/87b0a1c2_87b0a1c20bff3abf4227be3ad71918f4.png",
     "name": "Bolna",
     "description": "Create conversational voice agents using Bolna AI to enhance interactions, streamline operations and automate support."
   },
   {
     "id": "trello",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/trello.svg",
+    "icon": "https://decoims.com/mcp/071a7850-eb61-4b98-a857-13d68eb5167b/91dae825_91dae8256441ecc10b3fcdcff130bf1d.svg",
     "name": "Trello",
     "description": "A web-based, kanban-style, list-making application."
   },
   {
     "id": "asana",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master//asana.png",
+    "icon": "https://decoims.com/mcp/f82bd202-cbc3-422c-967b-04990f2c00d9/c5690b7c_c5690b7ca4df4aade72ace4c351b177a.png",
     "name": "Asana",
     "description": "Tool to help teams organize, track, and manage their work."
   },
   {
     "id": "dropbox",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/dropbox.svg",
+    "icon": "https://decoims.com/mcp/34486955-43a2-4116-9343-f9bf47706c33/27746b6d_27746b6d3ec0510c7c820f4f4fd672b8.svg",
     "name": "Dropbox",
     "description": "Dropbox is a file hosting service that offers cloud storage, file synchronization, personal cloud, and client software."
   },
@@ -595,79 +595,79 @@
   },
   {
     "id": "docusign",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/docusign.svg",
+    "icon": "https://decoims.com/mcp/04712b27-2a81-447c-a5ef-416cbc18a571/e00adbaa_e00adbaa0cd2e9ff017a1df10f554a05.svg",
     "name": "Docusign",
     "description": "DocuSign provides eSignature and digital agreement solutions, enabling businesses to send, sign, track, and manage documents electronically"
   },
   {
     "id": "googlesuper",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/google.svg",
+    "icon": "https://decoims.com/mcp/35ed0897-cede-4f37-ab80-4443a317b161/bc18e5b7_bc18e5b72723c2dc2fb09c0fde96548f.svg",
     "name": "Googlesuper",
     "description": "Google Super App combines all Google services including Drive, Calendar, Gmail, Sheets, Analytics, Ads, and more, providing a unified platform for seamless integration and management of your digital life."
   },
   {
     "id": "one_drive",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/one-drive.svg",
+    "icon": "https://decoims.com/mcp/c2fa7335-2491-4d41-9443-1f391b5235c5/c2419fb6_c2419fb66f44fe6a5427768c4e5bb3a8.svg",
     "name": "One drive",
     "description": "OneDrive is Microsoft’s cloud storage solution enabling users to store, sync, and share files across devices, offering offline access, real-time collaboration, and enterprise-grade security"
   },
   {
     "id": "recallai",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/recall.svg",
+    "icon": "https://decoims.com/mcp/7db68cc0-9fca-4a82-8702-acce2fbf83e7/3d1c2197_3d1c21970124c76757b14bf76f4cde6c.svg",
     "name": "Recallai",
     "description": "Recall.ai provides a single API for meeting bots on every platform like Zoom, Google Meet, Microsoft Teams and more."
   },
   {
     "id": "quickbooks",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/Rippiling.jpeg",
+    "icon": "https://decoims.com/mcp/d7fab328-39f9-4ad0-bbb5-baa046164dc1/7d419fa0_7d419fa0d8eeba691bb15a64f8c00f9e.jpg",
     "name": "Quickbooks",
     "description": "Quickbooks is a cloud-based accounting software that helps you manage your finances, track your income and expenses, and get insights into your business"
   },
   {
     "id": "stripe",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/stripe.jpeg",
+    "icon": "https://decoims.com/mcp/3244732a-0360-42f4-a7b7-5692bc99a44e/59c8efc9_59c8efc904b7c857a516043ba58f85c9.jpg",
     "name": "Stripe",
     "description": "Stripe is a payment processor that allows you to accept payments online."
   },
   {
     "id": "canva",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/canva.jpeg",
+    "icon": "https://decoims.com/mcp/bf2216fe-942a-41a2-9387-e5d56087ed4b/192c3fb2_192c3fb2fd8b3018fdc66d86154140aa.jpg",
     "name": "Canva",
     "description": "Canva offers a drag-and-drop design suite for creating social media graphics, presentations, and marketing materials with prebuilt templates and a vast element library"
   },
   {
     "id": "figma",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/figma.svg",
+    "icon": "https://decoims.com/mcp/c8c14433-9fce-479b-ab43-9004940c1170/bc897259_bc897259b9f981e48741aaf1d36b128f.svg",
     "name": "Figma",
     "description": "A collaborative interface design tool."
   },
   {
     "id": "canvas",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/canvas.jpeg",
+    "icon": "https://decoims.com/mcp/878453e6-6351-484e-903f-364efab07b92/6e9d2243_6e9d2243d187594da9d44b0f6f093078.jpg",
     "name": "Canvas",
     "description": "The Canvas API provides programmatic access to various learning management features of the Canvas platform, including courses, users, enrollments, grades, and more. It supports OAuth2 for secure authentication and authorization."
   },
   {
     "id": "d2lbrightspace",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/d2lbrightspace.png",
+    "icon": "https://decoims.com/mcp/28da0d81-1372-4422-a9fd-08c4af97e7e6/e00a139b_e00a139b809967b880cc5108fc1b513a.png",
     "name": "D2lbrightspace",
     "description": "D2L Brightspace provides APIs for building custom integrations and add-ons for the D2L Brightspace platform."
   },
   {
     "id": "borneo",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/borneo.jpeg",
+    "icon": "https://decoims.com/mcp/7bb7ac30-92e0-4a28-ac8b-1af74e461436/112b6cd1_112b6cd17fcb191a893f60c57a38b949.jpg",
     "name": "Borneo",
     "description": "Borneo is a data security and privacy platform designed for sensitive data discovery and remediation."
   },
   {
     "id": "coinbase",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/coinbase.svg",
+    "icon": "https://decoims.com/mcp/d173d1a9-9f4a-4de0-8f8d-cb99eff1fa50/3f4547e9_3f4547e94a44b9d1fc3cbe891891bb94.svg",
     "name": "Coinbase",
     "description": "Coinbase provides APIs for cryptocurrency trading and management."
   },
   {
     "id": "youtube",
-    "icon": "https://cdn.jsdelivr.net/gh/ComposioHQ/open-logos@master/youtube.svg",
+    "icon": "https://decoims.com/mcp/7bfa0854-05c0-47e5-9769-9da23a59fbbb/1606b986_1606b986e6069816c6bb243b25895ffb.svg",
     "name": "Youtube",
     "description": "Youtube actions to interact with youtube app"
   }
